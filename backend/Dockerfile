@@ -2,7 +2,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:latest as base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 # Build the app using SDK image
 FROM mcr.microsoft.com/dotnet/sdk:latest as build

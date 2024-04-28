@@ -1,13 +1,12 @@
-# Use an official Node runtime as a parent image
-FROM node:latest as build
+FROM node:16 as build
 WORKDIR /app
-COPY package*.json ./
+COPY package.json package-lock.json ./
 RUN npm install
-COPY . .
+COPY . ./
 RUN npm run build
 
-# Use Nginx to serve the React app
 FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
