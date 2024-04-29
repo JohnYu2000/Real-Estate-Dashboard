@@ -4,13 +4,13 @@ import { Signin } from './features/Signin'
 
 function App() {
   return (
-    <body style={{
+    <div style={{
       "display": "flex",
       "width": "100vw",
       "height": "100vh"
     }}>
       <Signin />
-    </body>
+    </div>
   );
 }
 
