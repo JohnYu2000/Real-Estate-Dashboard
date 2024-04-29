@@ -21,6 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./frontend
 
       - name: Run ESLint
         run: npx eslint src/
+        working-directory: ./frontend
