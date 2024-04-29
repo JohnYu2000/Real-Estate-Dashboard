@@ -1,11 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import { Signin } from './features/Signin'
 
-import { Welcome } from './features/Welcome'
+
 function App() {
   return (
-    <div className="App">
-      <Welcome />
+    <div style={{
+      "display": "flex",
+      "width": "100vw",
+      "height": "100vh"
+    }}>
+      <Signin />
     </div>
   );
 }
