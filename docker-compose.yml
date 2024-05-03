@@ -35,6 +35,8 @@ services:
     networks:
       - app-network
       - db-network
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=mydatabase;Username=admin;Password=admin;
 
   frontend:
     build: ./frontend
