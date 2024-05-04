@@ -43,22 +43,19 @@ namespace DatabaseNamespace {
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options => {
                 var key = builder.Configuration["Jwt:Key"];
-                var defaultconn = builder.Configuration["ConnectionStrings:DefaultConnection"];
-                Console.WriteLine($"Key: {key}");
-                Console.WriteLine($"defaultconn: {defaultconn}");
-            //     if (secretKey != null) {
-            //         options.TokenValidationParameters = new TokenValidationParameters {
-            //             ValidateIssuer = true,
-            //             ValidateAudience = true,
-            //             ValidateLifetime = true,
-            //             ValidateIssuerSigningKey = true,
-            //             ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            //             ValidAudience = builder.Configuration["Jwt:Audience"],
-            //             IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey)),
-            //         };    
-            //     } else {
-            //         throw new InvalidOperationException("JWT Secret Key is missing in the configuration.");
-            //     }
+                if (key != null) {
+                    options.TokenValidationParameters = new TokenValidationParameters {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                        ValidAudience = builder.Configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
+                    };    
+                } else {
+                    throw new InvalidOperationException("JWT Secret Key is missing in the configuration.");
+                }
             });
             builder.Services.AddAuthorization();
         }
