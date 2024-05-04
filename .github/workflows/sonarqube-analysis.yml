@@ -1,0 +1,33 @@
+name: SonarQube Analysis
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sonarqube-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.x'  # Adjust to your SDK version
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@v1
+      with:
+        sonar-login: ${{ secrets.SONARQUBE_TOKEN }}
+        project-key: 'your_project_key'
+        project-name: 'Your Project Name'
+        project-version: '1.0'
+        scanner-version: '4.0.0'
+        extra-properties: |
+          sonar.host.url=https://your-sonarqube-instance.com
