@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "R1/Dw3y+UQikzKWALQuzIbAGyWaJxox7j04xo/FcMUajE1LzsbysXRe9rlxX+Lq1qB2xUnUT699PwnC8vyOy+A==",
+  "dgSpecHash": "JwTqEXZHEaTNf8zkHtVe05xG3Wpz0nhTxSAvdHyEIWWnJjS0pG6pZJIXvxHis7tp8UISKqF+LydLADxL8+s5Bw==",
   "success": true,
   "projectFilePath": "/Users/johnyu/Downloads/Real-Estate-Dashboard/backend/backend.csproj",
   "expectedPackageFiles": [
+    "/Users/johnyu/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.4/microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512",
     "/Users/johnyu/.nuget/packages/microsoft.entityframeworkcore/8.0.4/microsoft.entityframeworkcore.8.0.4.nupkg.sha512",
     "/Users/johnyu/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.4/microsoft.entityframeworkcore.abstractions.8.0.4.nupkg.sha512",
     "/Users/johnyu/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.4/microsoft.entityframeworkcore.analyzers.8.0.4.nupkg.sha512",
@@ -17,8 +18,16 @@
     "/Users/johnyu/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "/Users/johnyu/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
     "/Users/johnyu/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/Users/johnyu/.nuget/packages/microsoft.identitymodel.abstractions/7.1.2/microsoft.identitymodel.abstractions.7.1.2.nupkg.sha512",
+    "/Users/johnyu/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.1.2/microsoft.identitymodel.jsonwebtokens.7.1.2.nupkg.sha512",
+    "/Users/johnyu/.nuget/packages/microsoft.identitymodel.logging/7.1.2/microsoft.identitymodel.logging.7.1.2.nupkg.sha512",
+    "/Users/johnyu/.nuget/packages/microsoft.identitymodel.protocols/7.1.2/microsoft.identitymodel.protocols.7.1.2.nupkg.sha512",
+    "/Users/johnyu/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/7.1.2/microsoft.identitymodel.protocols.openidconnect.7.1.2.nupkg.sha512",
+    "/Users/johnyu/.nuget/packages/microsoft.identitymodel.tokens/7.1.2/microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
+    "/Users/johnyu/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/johnyu/.nuget/packages/npgsql/8.0.2/npgsql.8.0.2.nupkg.sha512",
-    "/Users/johnyu/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.2/npgsql.entityframeworkcore.postgresql.8.0.2.nupkg.sha512"
+    "/Users/johnyu/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.2/npgsql.entityframeworkcore.postgresql.8.0.2.nupkg.sha512",
+    "/Users/johnyu/.nuget/packages/system.identitymodel.tokens.jwt/7.1.2/system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512"
   ],
   "logs": []
 }
