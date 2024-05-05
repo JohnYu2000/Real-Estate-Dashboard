@@ -62,6 +62,29 @@ services:
     networks:
       - app-network
 
+  sonarqube:
+    image: sonarqube
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    environment:
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://sonarqube-db:5432/sonarqube
+      - SONARQUBE_JDBC_USERNAME=sonarqube
+      - SONARQUBE_JDBC_PASSWORD=sonarqube
+    networks:
+      - sonarnetwork
+    depends_on:
+      - sonarqube-db
+
+  sonarqube-db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=sonarqube
+      - POSTGRES_PASSWORD=sonarqube
+      - POSTGRES_DB=sonarqube
+    networks:
+      - sonarnetwork
+
 volumes:
   postgres-data:
   pgadmin-data:
@@ -70,4 +93,6 @@ networks:
   app-network:
     driver: bridge
   db-network:
+    driver: bridge
+  sonarnetwork:
     driver: bridge
