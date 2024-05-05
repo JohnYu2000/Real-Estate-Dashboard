@@ -26,9 +26,9 @@ jobs:
       with:
         entryPoint: msbuild
         args: >-
-          /d:sonar.login=squ_1566da8da6a9ea97a43b184dea0f108a2a8090a6
-          /d:sonar.projectKey=your_project_key
-          /d:sonar.projectName='Your Project Name'
+          /d:sonar.login=sqp_d6aa0acaeaf797fc545c4e6c12e775ff705c0201
+          /d:sonar.projectKey=real-estate-dashboard
+          /d:sonar.projectName='Real Estate Dashboard'
           /d:sonar.projectVersion=1.0
           /d:sonar.host.url=http://localhost:9000
           /d:sonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
