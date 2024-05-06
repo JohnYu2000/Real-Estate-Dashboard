@@ -28,11 +28,11 @@ jobs:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       with:
         entryPoint: msbuild
-        args: >-
-          /d:sonar.login=${{ secrets.SONAR_TOKEN }}
-          /d:sonar.projectKey=real-estate-dashboard
-          /d:sonar.projectName='Real Estate Dashboard'
-          /d:sonar.projectVersion=1.0
-          /d:sonar.host.url=http://localhost:9000
-          /d:sonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
-          /d:sonar.coverage.exclusions=**/Migrations/**,**/bin/**,**/obj/**,**/Views/**,**/*.Designer.cs
+        args: >
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.projectKey=real-estate-dashboard
+          -Dsonar.projectName='Real Estate Dashboard'
+          -Dsonar.projectVersion=1.0
+          -Dsonar.host.url=${{ SONAR_HOST_URL }}
+          -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
+          -Dsonar.coverage.exclusions=**/Migrations/**,**/bin/**,**/obj/**,**/Views/**,**/*.Designer.cs
