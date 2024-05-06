@@ -85,6 +85,16 @@ services:
     networks:
       - sonarnetwork
 
+  ngrok:
+    image: wernight/ngrok
+    ports:
+      - "4040:4040"
+    environment:
+      - NGROK_PORT=sonarqube:9000
+      - NGROK_AUTHTOKEN=2g4tX5fTrlqp6ThkbZqb5sYxLB7_4GXZAW7vS4zJFF2EX9fRi
+    depends_on:
+      - sonarqube
+
 volumes:
   postgres-data:
   pgadmin-data:
