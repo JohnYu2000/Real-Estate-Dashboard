@@ -87,6 +87,7 @@ services:
 
   ngrok:
     image: wernight/ngrok
+    platform: linux/amd64
     ports:
       - "4040:4040"
     environment:
