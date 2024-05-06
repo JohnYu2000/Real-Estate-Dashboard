@@ -33,6 +33,6 @@ jobs:
           -Dsonar.projectKey=real-estate-dashboard
           -Dsonar.projectName='Real Estate Dashboard'
           -Dsonar.projectVersion=1.0
-          -Dsonar.host.url=${{ SONAR_HOST_URL }}
+          -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
           -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
           -Dsonar.coverage.exclusions=**/Migrations/**,**/bin/**,**/obj/**,**/Views/**,**/*.Designer.cs
