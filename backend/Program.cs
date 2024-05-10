@@ -11,19 +11,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-
-using Newtonsoft.Json;  // Remove this later
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace DatabaseNamespace {
     class Program {
         static void Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
-            // ----- REMOVE THIS LATER IF NOT NEEDED (START) ----- //
-            var baseDirectory = AppContext.BaseDirectory;
-            Console.WriteLine($"baseDirectory: {baseDirectory}");
-            var appSettingsPath = Path.Combine(baseDirectory, "appsettings.json");
-            builder.Configuration.AddJsonFile(appSettingsPath, optional: false, reloadOnChange: true);
-            // ----- REMOVE THIS LATER IF NOT NEEDED (END) ----- //
             ConfigureServices(builder);
             var app = builder.Build();
             ConfigureApp(app);
@@ -31,6 +24,14 @@ namespace DatabaseNamespace {
         }
 
         static void ConfigureServices(WebApplicationBuilder builder) {
+            builder.Services.AddCors(options => {
+                options.AddPolicy("AllowSpecificOrigin", new CorsPolicyBuilder()
+                    .WithOrigins("http://localhost:3000")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                    .Build());
+            });
             builder.Services.AddControllers();
             builder.Services.AddDbContext<DataContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -64,6 +65,7 @@ namespace DatabaseNamespace {
             if (app.Environment.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("AllowSpecificOrigin");
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
