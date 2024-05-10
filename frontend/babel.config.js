@@ -1,5 +1,5 @@
 module.exports = {
-    presents: [
+    presets: [
         '@babel/preset-env',
         '@babel/preset-react'
     ],
