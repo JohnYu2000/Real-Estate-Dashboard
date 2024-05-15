@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import './Dashboard.css';
+
+import Body from './Body.tsx';
+import Navbar from './Navbar.tsx';
 
 function Dashboard() {
     return (
-        <div>
-            Insert Dashboard Here
+        <div className="contain-dashboard">
+            <Navbar />
+            <Body />
         </div>
     )
 }
