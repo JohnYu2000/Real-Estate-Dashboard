@@ -1,0 +1,30 @@
+.contain-dashboard {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #ffffff;
+}
+.contain-dashboard .contain-navbar {
+  background-color: #3f3f3f;
+  height: 50px;
+  width: 100%;
+}
+.contain-dashboard .contain-body {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  width: 100%;
+  flex-grow: 1;
+}
+.contain-dashboard .contain-body .contain-sidebar {
+  background-color: #F8F9FA;
+  min-width: 150px;
+  width: 20%;
+  height: 100%;
+  border-right: solid #e3e3e3 1px;
+}
+.contain-dashboard .contain-body .contain-content {
+  background-color: #ffffff;
+}
+
+/*# sourceMappingURL=Dashboard.css.map */
