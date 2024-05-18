@@ -13,9 +13,45 @@ $light-border-color: #e3e3e3;
     background-color: $default-background-color;
 
     .contain-navbar {
+        display: flex;
         background-color: #3f3f3f;
         height: 50px;
         width: 100%;
+
+        .navbar-logo {
+            display: flex;
+            background-color: #272b2f;
+            width: 20%;
+            height: 100%;
+            color: white;
+            justify-content: left;
+            align-items: center;
+            padding: 0px 20px 0px 20px;
+        }
+
+        .searchbar {
+            display: flex;
+            flex-grow: 1;
+
+            input {
+                flex-grow: 1;
+                border: none;
+                padding: 0px 10px 0px 10px;
+                outline: none;
+                background-color: #494e53;
+                color: white;
+            }
+        }
+
+        .signout-button {
+            display: flex;
+            padding: 10px;
+            background-color: #343a3f;
+            color: #999d9f;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     .contain-body {
