@@ -5,9 +5,41 @@
   background-color: #ffffff;
 }
 .contain-dashboard .contain-navbar {
+  display: flex;
   background-color: #3f3f3f;
   height: 50px;
   width: 100%;
+}
+.contain-dashboard .contain-navbar .navbar-logo {
+  display: flex;
+  background-color: #272b2f;
+  width: 20%;
+  height: 100%;
+  color: white;
+  justify-content: left;
+  align-items: center;
+  padding: 0px 20px 0px 20px;
+}
+.contain-dashboard .contain-navbar .searchbar {
+  display: flex;
+  flex-grow: 1;
+}
+.contain-dashboard .contain-navbar .searchbar input {
+  flex-grow: 1;
+  border: none;
+  padding: 0px 10px 0px 10px;
+  outline: none;
+  background-color: #494e53;
+  color: white;
+}
+.contain-dashboard .contain-navbar .signout-button {
+  display: flex;
+  padding: 10px;
+  background-color: #343a3f;
+  color: #999d9f;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
 }
 .contain-dashboard .contain-body {
   display: flex;
