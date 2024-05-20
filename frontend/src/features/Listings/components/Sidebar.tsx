@@ -1,5 +1,5 @@
 import React from 'react';
-import './Dashboard.css';
+import './Listings.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import HomeIcon from '@mui/icons-material/Home';
@@ -11,7 +11,7 @@ function Sidebar() {
                 <div className="select-icon">
                     <HomeIcon />
                 </div>
-                <div className="select-name" id="current-selection">
+                <div className="select-name">
                     Dashboard    
                 </div>
             </div>
@@ -19,7 +19,7 @@ function Sidebar() {
                 <div className="select-icon">
                     <ApartmentIcon />
                 </div>
-                <div className="select-name">
+                <div className="select-name" id="current-selection">
                     Listings    
                 </div>
             </div>
