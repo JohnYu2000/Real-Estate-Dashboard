@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import axios from '../../../hooks/axiosConfig.tsx';
+import { useAuth as useAuthContext } from '../../../contexts/AuthContext.tsx';
 
 interface LoginResponse {
-    Status: string;
-    Message: string;
-    Token?: string;
+    status: string;
+    message: string;
+    token?: string;
 }
 
 interface ErrorResponse {
@@ -14,13 +15,17 @@ interface ErrorResponse {
 const useAuth = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<ErrorResponse | null>(null);
+    const {login: contextLogin } = useAuthContext();
 
     const login = async (email: string, password: string): Promise<LoginResponse> => {
         setLoading(true);
         setError(null);
         try {
             const response = await axios.post<LoginResponse>('/api/auth/login', { email, password });
-            setLoading(false);
+            console.log("Response:", response.data.token);
+            if (response.data.token) {
+                contextLogin(response.data.token);
+            }
             return response.data;
         } catch (err: any) {
             setLoading(false);
