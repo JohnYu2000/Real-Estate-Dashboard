@@ -66,6 +66,7 @@
   padding: 0px 15px 0px 15px;
   justify-content: left;
   align-items: center;
+  cursor: pointer;
 }
 .contain-profile .contain-body .contain-sidebar .sidebar-select .select-icon {
   display: flex;
