@@ -42,7 +42,8 @@ namespace DatabaseNamespace.Controllers {
             return Ok(new {
                 Status = "Success",
                 Message = "User data received.",
-                Token = token
+                Token = token,
+                UserID = user.userid
             });
         }
 
