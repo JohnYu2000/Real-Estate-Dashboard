@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './Signin.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import useAuth from '../hooks/useAuth.tsx';
@@ -7,12 +8,14 @@ function Signin() {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const { login, error, loading } = useAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
             const data = await login(email, password);
             console.log('Login successful:', data);
+            navigate('/dashboard');
         } catch (err) {
             console.error('Login failed:', err);
         }
