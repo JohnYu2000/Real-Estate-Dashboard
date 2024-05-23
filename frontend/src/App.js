@@ -11,18 +11,18 @@ import ProtectedRoute from './utils/ProtectedRoute.tsx';
 
 function App() {
   return (
-    <AuthProvider>
-      <div style={{"display": "flex", "width": "100vw", "height": "100vh", "margin": 0, "padding": 0}}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Signin />} />
-            <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
-            <Route path="/listings" element={<ProtectedRoute element={<Listings />} />} />
-            <Route path="/profile/:username" element={<ProtectedRoute element={<Profile />} />} />
-          </Routes>
-        </Router>
-      </div>
-    </AuthProvider>
+    <Router>
+      <AuthProvider>
+        <div style={{"display": "flex", "width": "100vw", "height": "100vh", "margin": 0, "padding": 0}}>
+            <Routes>
+              <Route path="/" element={<Signin />} />
+              <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+              <Route path="/listings" element={<ProtectedRoute element={<Listings />} />} />
+              <Route path="/profile/:username" element={<ProtectedRoute element={<Profile />} />} />
+            </Routes>
+        </div>
+      </AuthProvider>  
+    </Router>
   );
 }
 
