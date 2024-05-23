@@ -3,11 +3,14 @@ import './Listings.css';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import HomeIcon from '@mui/icons-material/Home';
+import useHandleNavigation from '../../../hooks/useHandleNavigation.tsx';
 
 function Sidebar() {
+    const handleNavigation = useHandleNavigation();
+
     return (
         <div className="contain-sidebar">
-            <div className="sidebar-select">
+            <div className="sidebar-select" onClick={() => handleNavigation('/dashboard')}>
                 <div className="select-icon">
                     <HomeIcon />
                 </div>
