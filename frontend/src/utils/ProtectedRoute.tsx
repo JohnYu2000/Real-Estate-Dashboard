@@ -9,7 +9,6 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element, path }) => {
     const { isAuthenticated, loading } = useAuth();
-    console.log('ProtectedRoute isAuthenticated:', isAuthenticated, 'Loading:', loading);
 
     if (loading) {
         return <div>Loading...</div>
