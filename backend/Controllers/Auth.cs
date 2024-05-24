@@ -43,7 +43,7 @@ namespace DatabaseNamespace.Controllers {
                 Status = "Success",
                 Message = "User data received.",
                 Token = token,
-                UserID = user.userid
+                Userid = user.userid
             });
         }
 
