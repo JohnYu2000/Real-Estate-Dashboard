@@ -26,7 +26,7 @@ function Sidebar() {
                     Listings    
                 </div>
             </div>
-            <div className="sidebar-select">
+            <div className="sidebar-select" onClick={() => handleNavigation(`/profile/${localStorage.getItem('userid')}`)}>
                 <div className="select-icon">
                     <AccountCircleIcon />
                 </div>
