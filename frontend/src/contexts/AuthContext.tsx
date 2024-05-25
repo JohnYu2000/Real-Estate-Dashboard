@@ -25,15 +25,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setLoading(false);
     }, []);
 
-    const login = (token: string, userid: string) => {
+    const login = (token: string, username: string) => {
         localStorage.setItem('token', token);
-        localStorage.setItem('userid', userid);
+        localStorage.setItem('username', username);
         setIsAuthenticated(true);
     };
 
     const logout = () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('userid');
+        localStorage.removeItem('username');
         setIsAuthenticated(false);
     };
 
