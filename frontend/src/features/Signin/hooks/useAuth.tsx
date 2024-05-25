@@ -6,7 +6,7 @@ interface LoginResponse {
     status: string;
     message: string;
     token?: string;
-    userid: string;
+    username: string;
 }
 
 interface ErrorResponse {
@@ -24,7 +24,7 @@ const useAuth = () => {
         try {
             const response = await axios.post<LoginResponse>('/api/auth/login', { email, password });
             if (response.data.token) {
-                contextLogin(response.data.token, response.data.userid);
+                contextLogin(response.data.token, response.data.username);
             }
             return response.data;
         } catch (err: any) {
