@@ -2,23 +2,18 @@ import { useState } from 'react';
 import realtor from 'realtorca';
 
 interface Options {
-    CultureId?: number;
-    ApplicationId?: number;
-    PropertySearchTypeId?: number;
-    HashCode: number;
-    PriceMin?: number;
+    PriceMin: number;
     PriceMax: number;
     LongitudeMin: number;
     LatitudeMin: number;
     LongitudeMax: number;
     LatitudeMax: number;
-    TransactionTypeId?: number;
-    StoreyRange: string;
     BedRange: string;
     BathRange: string;
-    SortBy: string;
-    SortOrder: string;
+    SortBy?: string;
+    SortOrder?: string;
     OwnershipTypeGroupId: number;
+    [key: string]: any;
 };
 
 interface ReturnData {
