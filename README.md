@@ -11,7 +11,7 @@ This project is a simple dashboard to view and analyze real estate trends in Can
 
 ## Installation
 ### Prerequisites
-- **Docker Desktop:** Ensure Docker Desktop is installed on your machine. You can down it [here](https://www.docker.com/products/docker-desktop).
+- **Docker Desktop:** Ensure Docker Desktop is installed on your machine. You can download it [here](https://www.docker.com/products/docker-desktop).
 - **Visual Studio Code:** Ensure Visual Studio Code is installed. You can download it [here](https://code.visualstudio.com/).
 
 ### Steps
