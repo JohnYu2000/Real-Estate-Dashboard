@@ -5,6 +5,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./sql_scripts:/docker-entrypoint-initdb.d
+      - ./HouseListings-Top45Cities-10292023-kaggle-clean.csv:/csv_files/HouseListings-Top45Cities-10292023-kaggle-clean.csv
     environment:
       POSTGRES_DB: mydatabase
       POSTGRES_USER: admin
