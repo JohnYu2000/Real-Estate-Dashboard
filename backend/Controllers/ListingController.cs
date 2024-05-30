@@ -25,7 +25,9 @@ namespace DatabaseNamespace.Controllers {
             [FromQuery] int? population = null,
             [FromQuery] decimal? latitude = null,
             [FromQuery] decimal? longitude = null,
-            [FromQuery] decimal? medianFamilyIncome = null)
+            [FromQuery] decimal? medianFamilyIncome = null,
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 50)
         {
             var query = _context.Listings.AsQueryable();
 
@@ -69,7 +71,9 @@ namespace DatabaseNamespace.Controllers {
                 query = query.Where(l => l.MedianFamilyIncome == medianFamilyIncome);
             }
 
-            return await query.ToListAsync();
+            var listings = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            return listings;
         }
     }
 }
