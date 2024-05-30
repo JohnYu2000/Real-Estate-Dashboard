@@ -17,15 +17,22 @@ namespace DatabaseNamespace.Controllers {
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Listing>>> GetListings(
             [FromHeader] string? city = null,
-            [FromHeader] decimal? price = null,
+            [FromHeader] decimal? minPrice = null,
+            [FromHeader] decimal? maxPrice = null,
             [FromHeader] string? address = null,
-            [FromHeader] int? numberBeds = null,
-            [FromHeader] int? numberBaths = null,
+            [FromHeader] int? minNumberBeds = null,
+            [FromHeader] int? maxNumberBeds = null,
+            [FromHeader] int? minNumberBaths = null,
+            [FromHeader] int? maxNumberBaths = null,
             [FromHeader] string? province = null,
-            [FromHeader] int? population = null,
-            [FromHeader] decimal? latitude = null,
-            [FromHeader] decimal? longitude = null,
-            [FromHeader] decimal? medianFamilyIncome = null,
+            [FromHeader] int? minPopulation = null,
+            [FromHeader] int? maxPopulation = null,
+            [FromHeader] decimal? minLatitude = null,
+            [FromHeader] decimal? maxLatitude = null,
+            [FromHeader] decimal? minLongitude = null,
+            [FromHeader] decimal? maxLongitude = null,
+            [FromHeader] decimal? minMedianFamilyIncome = null,
+            [FromHeader] decimal? maxMedianFamilyIncome = null,
             [FromHeader] int page = 1,
             [FromHeader] int pageSize = 50)
         {
@@ -35,40 +42,68 @@ namespace DatabaseNamespace.Controllers {
                 query = query.Where(l => l.City == city);
             }
 
-            if (price.HasValue) {
-                query = query.Where(l => l.Price == price);
+            if (minPrice.HasValue) {
+                query = query.Where(l => l.Price >= minPrice);
+            }
+
+            if (maxPrice.HasValue) {
+                query = query.Where(l => l.Price <= maxPrice);
             }
 
             if (!string.IsNullOrEmpty(address)) {
                 query = query.Where(l => l.Address == address);
             }
 
-            if (numberBeds.HasValue) {
-                query = query.Where(l => l.NumberBeds == numberBeds);
+            if (minNumberBeds.HasValue) {
+                query = query.Where(l => l.NumberBeds >= minNumberBeds);
             }
 
-            if (numberBaths.HasValue) {
-                query = query.Where(l => l.NumberBaths == numberBaths);
+            if (maxNumberBeds.HasValue) {
+                query = query.Where(l => l.NumberBeds <= maxNumberBeds);
+            }
+
+            if (minNumberBaths.HasValue) {
+                query = query.Where(l => l.NumberBaths >= minNumberBaths);
+            }
+
+            if (maxNumberBaths.HasValue) {
+                query = query.Where(l => l.NumberBaths <= maxNumberBaths);
             }
 
             if (!string.IsNullOrEmpty(province)) {
                 query = query.Where(l => l.Province == province);
             }
 
-            if (population.HasValue) {
-                query = query.Where(l => l.Population == population);
+            if (minPopulation.HasValue) {
+                query = query.Where(l => l.Population >= minPopulation);
             }
 
-            if (latitude.HasValue) {
-                query = query.Where(l => l.Latitude == latitude);
+            if (maxPopulation.HasValue) {
+                query = query.Where(l => l.Population <= maxPopulation);
             }
 
-            if (longitude.HasValue) {
-                query = query.Where(l => l.Longitude == longitude);
+            if (minLatitude.HasValue) {
+                query = query.Where(l => l.Latitude >= minLatitude);
             }
 
-            if (medianFamilyIncome.HasValue) {
-                query = query.Where(l => l.MedianFamilyIncome == medianFamilyIncome);
+            if (maxLatitude.HasValue) {
+                query = query.Where(l => l.Latitude <= maxLatitude);
+            }
+
+            if (minLongitude.HasValue) {
+                query = query.Where(l => l.Longitude >= minLongitude);
+            }
+
+            if (maxLongitude.HasValue) {
+                query = query.Where(l => l.Longitude <= maxLongitude);
+            }
+
+            if (minMedianFamilyIncome.HasValue) {
+                query = query.Where(l => l.MedianFamilyIncome >= minMedianFamilyIncome);
+            }
+
+            if (maxMedianFamilyIncome.HasValue) {
+                query = query.Where(l => l.MedianFamilyIncome <= maxMedianFamilyIncome);
             }
 
             var listings = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
