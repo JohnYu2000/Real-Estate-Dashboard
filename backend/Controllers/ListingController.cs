@@ -4,70 +4,72 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-[ApiController]
-[Route("[controller]")]
-public class ListingController : ControllerBase {
-    private readonly DataContext _context;
+namespace DatabaseNamespace.Controllers {
+    [ApiController]
+    [Route("api/[controller]")]
+    public class ListingController : ControllerBase {
+        private readonly DataContext _context;
 
-    public ListingController(DataContext context) {
-        _context = context;
-    }
-
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Listing>>> GetListings(
-        [FromQuery] string city,
-        [FromQuery] decimal? price,
-        [FromQuery] string address,
-        [FromQuery] int? numberBeds,
-        [FromQuery] int? numberBaths,
-        [FromQuery] string province,
-        [FromQuery] int? population,
-        [FromQuery] decimal? latitude,
-        [FromQuery] decimal? longitude,
-        [FromQuery] decimal? medianFamilyIncome)
-    {
-        var query = _context.Listings.AsQueryable();
-
-        if (!string.IsNullOrEmpty(city)) {
-            query = query.Where(l => l.City == city);
+        public ListingController(DataContext context) {
+            _context = context;
         }
 
-        if (price.HasValue) {
-            query = query.Where(l => l.Price == price);
-        }
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Listing>>> GetListings(
+            [FromQuery] string? city = null,
+            [FromQuery] decimal? price = null,
+            [FromQuery] string? address = null,
+            [FromQuery] int? numberBeds = null,
+            [FromQuery] int? numberBaths = null,
+            [FromQuery] string? province = null,
+            [FromQuery] int? population = null,
+            [FromQuery] decimal? latitude = null,
+            [FromQuery] decimal? longitude = null,
+            [FromQuery] decimal? medianFamilyIncome = null)
+        {
+            var query = _context.Listings.AsQueryable();
 
-        if (!string.IsNullOrEmpty(address)) {
-            query = query.Where(l => l.Address == address);
-        }
+            if (!string.IsNullOrEmpty(city)) {
+                query = query.Where(l => l.City == city);
+            }
 
-        if (numberBeds.HasValue) {
-            query = query.Where(l => l.NumberBeds == numberBeds);
-        }
+            if (price.HasValue) {
+                query = query.Where(l => l.Price == price);
+            }
 
-        if (numberBaths.HasValue) {
-            query = query.Where(l => l.NumberBaths == numberBaths);
-        }
+            if (!string.IsNullOrEmpty(address)) {
+                query = query.Where(l => l.Address == address);
+            }
 
-        if (!string.IsNullOrEmpty(province)) {
-            query = query.Where(l => l.Province == province);
-        }
+            if (numberBeds.HasValue) {
+                query = query.Where(l => l.NumberBeds == numberBeds);
+            }
 
-        if (population.HasValue) {
-            query = query.Where(l => l.Population == population);
-        }
+            if (numberBaths.HasValue) {
+                query = query.Where(l => l.NumberBaths == numberBaths);
+            }
 
-        if (latitude.HasValue) {
-            query = query.Where(l => l.Latitude == latitude);
-        }
+            if (!string.IsNullOrEmpty(province)) {
+                query = query.Where(l => l.Province == province);
+            }
 
-        if (longitude.HasValue) {
-            query = query.Where(l => l.Longitude == longitude);
-        }
+            if (population.HasValue) {
+                query = query.Where(l => l.Population == population);
+            }
 
-        if (medianFamilyIncome.HasValue) {
-            query = query.Where(l => l.MedianFamilyIncome == medianFamilyIncome);
-        }
+            if (latitude.HasValue) {
+                query = query.Where(l => l.Latitude == latitude);
+            }
 
-        return await query.ToListAsync();
+            if (longitude.HasValue) {
+                query = query.Where(l => l.Longitude == longitude);
+            }
+
+            if (medianFamilyIncome.HasValue) {
+                query = query.Where(l => l.MedianFamilyIncome == medianFamilyIncome);
+            }
+
+            return await query.ToListAsync();
+        }
     }
 }
