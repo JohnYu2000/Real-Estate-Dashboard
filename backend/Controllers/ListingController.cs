@@ -16,18 +16,18 @@ namespace DatabaseNamespace.Controllers {
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Listing>>> GetListings(
-            [FromQuery] string? city = null,
-            [FromQuery] decimal? price = null,
-            [FromQuery] string? address = null,
-            [FromQuery] int? numberBeds = null,
-            [FromQuery] int? numberBaths = null,
-            [FromQuery] string? province = null,
-            [FromQuery] int? population = null,
-            [FromQuery] decimal? latitude = null,
-            [FromQuery] decimal? longitude = null,
-            [FromQuery] decimal? medianFamilyIncome = null,
-            [FromQuery] int page = 1,
-            [FromQuery] int pageSize = 50)
+            [FromHeader] string? city = null,
+            [FromHeader] decimal? price = null,
+            [FromHeader] string? address = null,
+            [FromHeader] int? numberBeds = null,
+            [FromHeader] int? numberBaths = null,
+            [FromHeader] string? province = null,
+            [FromHeader] int? population = null,
+            [FromHeader] decimal? latitude = null,
+            [FromHeader] decimal? longitude = null,
+            [FromHeader] decimal? medianFamilyIncome = null,
+            [FromHeader] int page = 1,
+            [FromHeader] int pageSize = 50)
         {
             var query = _context.Listings.AsQueryable();
 
