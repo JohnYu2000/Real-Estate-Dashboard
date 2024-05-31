@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using DatabaseNamespace.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DatabaseNamespace.Controllers {
     [ApiController]
@@ -13,6 +14,7 @@ namespace DatabaseNamespace.Controllers {
             _context = context;
         }
 
+        [Authorize]
         [HttpGet("{username}")]
         public async Task<IActionResult> GetUserByUsername(string username) {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.username == username);
