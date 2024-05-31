@@ -37,7 +37,7 @@ interface FetchListingsParams {
     pageSize?: number;
 }
 
-const useListings = (params: FetchListingsParams) => {
+const useListings = (queryParams: FetchListingsParams) => {
     const [listings, setListings] = useState<Listing[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -46,9 +46,13 @@ const useListings = (params: FetchListingsParams) => {
         const fetchListings = async () => {
             try {
                 setLoading(true);
+                const token = localStorage.getItem('token');
                 const response = await axios.get<Listing[]>('/api/listing', {
                     headers: {
-                        ...params,
+                        Authorization: `Bearer ${token}`,
+                    },
+                    params: {
+                        ...queryParams,
                     },
                 });
                 setListings(response.data)
@@ -60,7 +64,7 @@ const useListings = (params: FetchListingsParams) => {
         };
 
         fetchListings();
-    }, [params]);
+    }, [queryParams]);
 
     return { listings, loading, error };
 };
