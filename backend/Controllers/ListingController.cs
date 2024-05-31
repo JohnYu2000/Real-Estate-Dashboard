@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -14,27 +15,28 @@ namespace DatabaseNamespace.Controllers {
             _context = context;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Listing>>> GetListings(
-            [FromHeader] string? city = null,
-            [FromHeader] decimal? minPrice = null,
-            [FromHeader] decimal? maxPrice = null,
-            [FromHeader] string? address = null,
-            [FromHeader] int? minNumberBeds = null,
-            [FromHeader] int? maxNumberBeds = null,
-            [FromHeader] int? minNumberBaths = null,
-            [FromHeader] int? maxNumberBaths = null,
-            [FromHeader] string? province = null,
-            [FromHeader] int? minPopulation = null,
-            [FromHeader] int? maxPopulation = null,
-            [FromHeader] decimal? minLatitude = null,
-            [FromHeader] decimal? maxLatitude = null,
-            [FromHeader] decimal? minLongitude = null,
-            [FromHeader] decimal? maxLongitude = null,
-            [FromHeader] decimal? minMedianFamilyIncome = null,
-            [FromHeader] decimal? maxMedianFamilyIncome = null,
-            [FromHeader] int page = 1,
-            [FromHeader] int pageSize = 50)
+            [FromBody] string? city = null,
+            [FromBody] decimal? minPrice = null,
+            [FromBody] decimal? maxPrice = null,
+            [FromBody] string? address = null,
+            [FromBody] int? minNumberBeds = null,
+            [FromBody] int? maxNumberBeds = null,
+            [FromBody] int? minNumberBaths = null,
+            [FromBody] int? maxNumberBaths = null,
+            [FromBody] string? province = null,
+            [FromBody] int? minPopulation = null,
+            [FromBody] int? maxPopulation = null,
+            [FromBody] decimal? minLatitude = null,
+            [FromBody] decimal? maxLatitude = null,
+            [FromBody] decimal? minLongitude = null,
+            [FromBody] decimal? maxLongitude = null,
+            [FromBody] decimal? minMedianFamilyIncome = null,
+            [FromBody] decimal? maxMedianFamilyIncome = null,
+            [FromBody] int page = 1,
+            [FromBody] int pageSize = 50)
         {
             var query = _context.Listings.AsQueryable();
 
