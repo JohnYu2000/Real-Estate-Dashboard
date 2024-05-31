@@ -15,8 +15,8 @@ namespace DatabaseNamespace.Controllers {
         }
 
         [Authorize]
-        [HttpGet("{username}")]
-        public async Task<IActionResult> GetUserByUsername(string username) {
+        [HttpGet("getuserbyusername")]
+        public async Task<IActionResult> GetUserByUsername([FromQuery] string username) {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.username == username);
 
             if (user == null) {
