@@ -56,7 +56,7 @@ const useListings = (queryParams: FetchListingsParams) => {
                     },
                 });
                 setListings(response.data)
-            } catch (err) {
+            } catch (err: any) {
                 setError(err.message);
             } finally {
                 setLoading(false);
