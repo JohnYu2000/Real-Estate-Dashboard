@@ -3,26 +3,31 @@
   flex-direction: column;
   flex-grow: 1;
   background-color: #ffffff;
+  overflow: hidden;
 }
 .contain-listings .contain-navbar {
   display: flex;
   background-color: #3f3f3f;
   height: 50px;
   width: 100%;
+  overflow: hidden;
 }
 .contain-listings .contain-navbar .navbar-logo {
   display: flex;
   background-color: #272b2f;
   width: 20%;
+  min-width: 150px;
   height: 100%;
   color: white;
   justify-content: left;
   align-items: center;
   padding: 0px 20px 0px 20px;
+  overflow: hidden;
 }
 .contain-listings .contain-navbar .searchbar {
   display: flex;
   flex-grow: 1;
+  overflow: hidden;
 }
 .contain-listings .contain-navbar .searchbar input {
   flex-grow: 1;
@@ -31,6 +36,7 @@
   outline: none;
   background-color: #494e53;
   color: white;
+  overflow: hidden;
 }
 .contain-listings .contain-navbar .signout-button {
   display: flex;
@@ -40,6 +46,7 @@
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .contain-listings .contain-body {
   display: flex;
@@ -47,6 +54,7 @@
   background-color: #ffffff;
   width: 100%;
   flex-grow: 1;
+  overflow: hidden;
 }
 .contain-listings .contain-body .contain-sidebar {
   background-color: #F8F9FA;
@@ -54,9 +62,12 @@
   width: 20%;
   height: 100%;
   border-right: solid #e3e3e3 1px;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 .contain-listings .contain-body .contain-sidebar #current-selection {
   color: #007bff;
+  overflow: hidden;
 }
 .contain-listings .contain-body .contain-sidebar .sidebar-select {
   display: flex;
@@ -67,6 +78,7 @@
   justify-content: left;
   align-items: center;
   cursor: pointer;
+  overflow: hidden;
 }
 .contain-listings .contain-body .contain-sidebar .sidebar-select .select-icon {
   display: flex;
@@ -74,9 +86,47 @@
   height: 100%;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .contain-listings .contain-body .contain-sidebar .sidebar-select .select-name {
   font-weight: bold;
+  overflow: hidden;
+}
+.contain-listings .contain-body .contain-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  overflow: hidden;
+}
+.contain-listings .contain-body .contain-content .contain-table {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent .header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent .header .columnName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #efefef;
+  height: 25px;
+  white-space: nowrap;
+}
+.contain-listings .contain-body .contain-content .contain-table .contain-tableheader {
+  background-color: #666666;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=Listings.css.map */

@@ -11,27 +11,32 @@ $light-border-color: #e3e3e3;
     flex-direction: column;
     flex-grow: 1;
     background-color: $default-background-color;
+    overflow: hidden;
 
     .contain-navbar {
         display: flex;
         background-color: #3f3f3f;
         height: 50px;
         width: 100%;
+        overflow: hidden;
 
         .navbar-logo {
             display: flex;
             background-color: #272b2f;
             width: 20%;
+            min-width: 150px;
             height: 100%;
             color: white;
             justify-content: left;
             align-items: center;
             padding: 0px 20px 0px 20px;
+            overflow: hidden;
         }
 
         .searchbar {
             display: flex;
             flex-grow: 1;
+            overflow: hidden;
 
             input {
                 flex-grow: 1;
@@ -40,6 +45,7 @@ $light-border-color: #e3e3e3;
                 outline: none;
                 background-color: #494e53;
                 color: white;
+                overflow: hidden;
             }
         }
 
@@ -51,6 +57,7 @@ $light-border-color: #e3e3e3;
             cursor: pointer;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
     }
 
@@ -60,6 +67,7 @@ $light-border-color: #e3e3e3;
         background-color: $default-background-color;
         width: 100%;
         flex-grow: 1;
+        overflow: hidden;
 
         .contain-sidebar {
             background-color: $sidebar-color;
@@ -67,9 +75,12 @@ $light-border-color: #e3e3e3;
             width: 20%;
             height: 100%;
             border-right: solid $light-border-color 1px;
+            overflow: hidden;
+            flex-shrink: 0;
 
             #current-selection {
                 color: $default-blue;
+                overflow: hidden;
             }
 
             .sidebar-select {
@@ -81,6 +92,7 @@ $light-border-color: #e3e3e3;
                 justify-content: left;
                 align-items: center;
                 cursor: pointer;
+                overflow: hidden;
 
                 .select-icon {
                     display: flex;
@@ -88,10 +100,58 @@ $light-border-color: #e3e3e3;
                     height: 100%;
                     justify-content: center;
                     align-items: center;
+                    overflow: hidden;
                 }
 
                 .select-name {
                     font-weight: bold;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        .contain-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            height: 100%;
+            overflow: hidden;
+
+            .contain-table {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+
+                .contain-tablecontent {
+                    display: flex;
+                    flex-direction: column;
+                    overflow: auto;
+
+                    .header {
+                        display: flex;
+                        flex-direction: row;
+                        width: 100%;
+
+                        .columnName {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: #efefef;
+                            height: 25px;
+                            white-space: nowrap;
+                        }
+                    }
+
+                    .content {
+
+                    }
+                }
+
+                .contain-tableheader {
+                    background-color: #666666;
+                    width: 100%;
+                    height: 60px;
+                    overflow: hidden;
                 }
             }
         }
