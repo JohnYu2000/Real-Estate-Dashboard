@@ -18,25 +18,25 @@ namespace DatabaseNamespace.Controllers {
         [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Listing>>> GetListings(
-            [FromBody] string? city = null,
-            [FromBody] decimal? minPrice = null,
-            [FromBody] decimal? maxPrice = null,
-            [FromBody] string? address = null,
-            [FromBody] int? minNumberBeds = null,
-            [FromBody] int? maxNumberBeds = null,
-            [FromBody] int? minNumberBaths = null,
-            [FromBody] int? maxNumberBaths = null,
-            [FromBody] string? province = null,
-            [FromBody] int? minPopulation = null,
-            [FromBody] int? maxPopulation = null,
-            [FromBody] decimal? minLatitude = null,
-            [FromBody] decimal? maxLatitude = null,
-            [FromBody] decimal? minLongitude = null,
-            [FromBody] decimal? maxLongitude = null,
-            [FromBody] decimal? minMedianFamilyIncome = null,
-            [FromBody] decimal? maxMedianFamilyIncome = null,
-            [FromBody] int page = 1,
-            [FromBody] int pageSize = 50)
+            [FromQuery] string? city = null,
+            [FromQuery] decimal? minPrice = null,
+            [FromQuery] decimal? maxPrice = null,
+            [FromQuery] string? address = null,
+            [FromQuery] int? minNumberBeds = null,
+            [FromQuery] int? maxNumberBeds = null,
+            [FromQuery] int? minNumberBaths = null,
+            [FromQuery] int? maxNumberBaths = null,
+            [FromQuery] string? province = null,
+            [FromQuery] int? minPopulation = null,
+            [FromQuery] int? maxPopulation = null,
+            [FromQuery] decimal? minLatitude = null,
+            [FromQuery] decimal? maxLatitude = null,
+            [FromQuery] decimal? minLongitude = null,
+            [FromQuery] decimal? maxLongitude = null,
+            [FromQuery] decimal? minMedianFamilyIncome = null,
+            [FromQuery] decimal? maxMedianFamilyIncome = null,
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 50)
         {
             var query = _context.Listings.AsQueryable();
 
