@@ -7,6 +7,7 @@
 }
 .contain-listings .contain-navbar {
   display: flex;
+  flex-shrink: 0;
   background-color: #3f3f3f;
   height: 50px;
   width: 100%;
@@ -106,6 +107,13 @@
   height: 100%;
   overflow: hidden;
 }
+.contain-listings .contain-body .contain-content .contain-table .contain-tableheader {
+  background-color: #666666;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
 .contain-listings .contain-body .contain-content .contain-table .contain-tablecontent {
   display: flex;
   flex-direction: column;
@@ -113,31 +121,24 @@
   overflow: auto;
 }
 .contain-listings .contain-body .contain-content .contain-table .contain-tablecontent table {
-  display: flex;
+  table-layout: auto;
   width: 100%;
+  border-collapse: collapse;
 }
-.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent table .header {
-  display: flex;
-  width: 100%;
-  height: 25px;
+.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent table thead .header {
   background-color: #efefef;
 }
-.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent table .header th {
-  display: flex;
-  flex-grow: 1;
-  height: 100%;
+.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent table thead .header th {
+  padding: 8px;
+  text-align: left;
+  border: solid #d5d5d5 thin;
   white-space: nowrap;
-  border-left: solid black thin;
-  border-top: solid black thin;
-  border-bottom: solid black thin;
-  justify-content: left;
-  align-items: center;
 }
-.contain-listings .contain-body .contain-content .contain-table .contain-tableheader {
-  background-color: #666666;
-  width: 100%;
-  height: 60px;
-  overflow: hidden;
+.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent table tbody tr td {
+  padding: 8px;
+  text-align: left;
+  border: solid #e5e5e5 thin;
+  white-space: nowrap;
 }
 
 /*# sourceMappingURL=Listings.css.map */
