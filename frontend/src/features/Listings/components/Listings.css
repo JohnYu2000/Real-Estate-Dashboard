@@ -100,6 +100,8 @@
   overflow: hidden;
 }
 .contain-listings .contain-body .contain-content .contain-table {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -107,20 +109,29 @@
 .contain-listings .contain-body .contain-content .contain-table .contain-tablecontent {
   display: flex;
   flex-direction: column;
+  width: 100%;
   overflow: auto;
 }
-.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent .header {
+.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent table {
   display: flex;
-  flex-direction: row;
   width: 100%;
 }
-.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent .header .columnName {
+.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent table .header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #efefef;
+  width: 100%;
   height: 25px;
+  background-color: #efefef;
+}
+.contain-listings .contain-body .contain-content .contain-table .contain-tablecontent table .header th {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
   white-space: nowrap;
+  border-left: solid black thin;
+  border-top: solid black thin;
+  border-bottom: solid black thin;
+  justify-content: left;
+  align-items: center;
 }
 .contain-listings .contain-body .contain-content .contain-table .contain-tableheader {
   background-color: #666666;
