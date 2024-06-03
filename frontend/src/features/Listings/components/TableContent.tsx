@@ -2,8 +2,12 @@ import React, { useMemo } from 'react';
 import './Listings.css';
 import useListings from './../../../hooks/useListing.tsx';
 
-function TableContent() {
-    const queryParams = useMemo(() => ({}), []);
+interface TableContentProps {
+    page: number;
+}
+
+function TableContent({ page }: TableContentProps) {
+    const queryParams = useMemo(() => ({ page }), [page]);
 
     const { listings, loading, error } = useListings(queryParams);
 
