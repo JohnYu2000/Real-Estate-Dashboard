@@ -4,6 +4,7 @@ import './Listings.css';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
+import ColumnSelectorModal from './ColumnSelectorModal.tsx';
 import { handleColumnChange } from './../utils/handleColumnChange.tsx';
 import handleDecrement from './../utils/handleDecrement.tsx';
 import handleIncrement from './../utils/handleIncrement.tsx';
@@ -30,6 +31,10 @@ const availableColumns = [
 ]
 
 function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: TableHeaderProps) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     return (
         <div className="contain-tableheader">
@@ -44,13 +49,16 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: Tab
                 </div>
             </div>
             <div className="column-selector">
-                <label>Select Columns:</label>
-                <select multiple value={selectedColumns} onChange={(event) => handleColumnChange(event, setSelectedColumns)}>
-                    {availableColumns.map(column => (
-                        <option key={column} value={column}>{column}</option>
-                    ))}
-                </select>
+                <button onClick={openModal}>Select Columns</button>
             </div>
+            {isModalOpen && (
+                <ColumnSelectorModal
+                    selectedColumns={selectedColumns}
+                    setSelectedColumns={setSelectedColumns}
+                    availableColumns={availableColumns}
+                    closeModal={closeModal}
+                />
+            )}
         </div>
     )
 }
