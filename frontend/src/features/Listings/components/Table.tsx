@@ -6,11 +6,24 @@ import TableHeader from './TableHeader.tsx';
 
 function Table() {
     const [page, setPage] = useState(1);
+    const [selectedColumns, setSelectedColumns] = useState([
+        'Listing ID',
+        'City',
+        'Price',
+        'Address',
+        'Number of Beds',
+        'Number of Baths',
+        'Province',
+        'Population',
+        'Latitude',
+        'Longitude',
+        'Median Family Income'
+    ])
 
     return (
         <div className="contain-table">
-            <TableHeader page={page} setPage={setPage} />
-            <TableContent page={page} />
+            <TableHeader page={page} setPage={setPage} selectedColumns={selectedColumns} setSelectedColumns={setSelectedColumns} />
+            <TableContent page={page} selectedColumns={selectedColumns} />
         </div>
     )
 }
