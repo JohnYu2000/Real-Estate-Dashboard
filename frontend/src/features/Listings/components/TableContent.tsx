@@ -4,9 +4,10 @@ import useListings from './../../../hooks/useListing.tsx';
 
 interface TableContentProps {
     page: number;
+    selectedColumns: string[];
 }
 
-function TableContent({ page }: TableContentProps) {
+function TableContent({ page, selectedColumns }: TableContentProps) {
     const queryParams = useMemo(() => ({ page }), [page]);
 
     const { listings, loading, error } = useListings(queryParams);
@@ -24,33 +25,33 @@ function TableContent({ page }: TableContentProps) {
             <table>
                 <thead>
                     <tr className="header">
-                        <th>Listing ID</th>
-                        <th>City</th>
-                        <th>Price</th>
-                        <th>Address</th>
-                        <th>Number of Beds</th>
-                        <th>Number of Baths</th>
-                        <th>Province</th>
-                        <th>Population</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th>Median Family Income</th>
+                        {selectedColumns.includes('Listing ID') && <th>Listing ID</th>}
+                        {selectedColumns.includes('City') && <th>City</th>}
+                        {selectedColumns.includes('Price') && <th>Price</th>}
+                        {selectedColumns.includes('Address') && <th>Address</th>}
+                        {selectedColumns.includes('Number of Beds') && <th>Number of Beds</th>}
+                        {selectedColumns.includes('Number of Baths') && <th>Number of Baths</th>}
+                        {selectedColumns.includes('Province') && <th>Province</th>}
+                        {selectedColumns.includes('Population') && <th>Population</th>}
+                        {selectedColumns.includes('Latitude') && <th>Latitude</th>}
+                        {selectedColumns.includes('Longitude') && <th>Longitude</th>}
+                        {selectedColumns.includes('Median Family Income') && <th>Median Family Income</th>}
                     </tr>    
                 </thead>
                 <tbody>
                     {listings.map((listing) => (
                         <tr key={listing.id}>
-                            <td>{listing.id}</td>
-                            <td>{listing.city}</td>
-                            <td>{listing.price}</td>
-                            <td>{listing.address}</td>
-                            <td>{listing.numberBeds}</td>
-                            <td>{listing.numberBaths}</td>
-                            <td>{listing.province}</td>
-                            <td>{listing.population}</td>
-                            <td>{listing.latitude}</td>
-                            <td>{listing.longitude}</td>
-                            <td>{listing.medianFamilyIncome}</td>
+                            {selectedColumns.includes('Listing ID') && <td>{listing.id}</td>}
+                            {selectedColumns.includes('City') && <td>{listing.city}</td>}
+                            {selectedColumns.includes('Price') && <td>{listing.price}</td>}
+                            {selectedColumns.includes('Address') && <td>{listing.address}</td>}
+                            {selectedColumns.includes('Number of Beds') && <td>{listing.numberBeds}</td>}
+                            {selectedColumns.includes('Number of Baths') && <td>{listing.numberBaths}</td>}
+                            {selectedColumns.includes('Province') && <td>{listing.province}</td>}
+                            {selectedColumns.includes('Population') && <td>{listing.population}</td>}
+                            {selectedColumns.includes('Latitude') && <td>{listing.latitude}</td>}
+                            {selectedColumns.includes('Longitude') && <td>{listing.longitude}</td>}
+                            {selectedColumns.includes('Median Family Income') && <td>{listing.medianFamilyIncome}</td>}
                         </tr>
                     ))}
                 </tbody>
