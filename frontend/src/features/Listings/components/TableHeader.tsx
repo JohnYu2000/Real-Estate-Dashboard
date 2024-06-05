@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './Listings.css';
 
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -32,9 +32,16 @@ const availableColumns = [
 
 function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: TableHeaderProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const modalRef = useRef<HTMLDialogElement>(null);
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    const openModal = () => {
+        setIsModalOpen(true);
+        modalRef.current?.showModal();
+    };
+    const closeModal = () => {
+        setIsModalOpen(false);
+        modalRef.current?.close();
+    };
 
     return (
         <div className="contain-tableheader">
@@ -51,14 +58,16 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: Tab
             <div className="column-selector">
                 <button onClick={openModal}>Select Columns</button>
             </div>
-            {isModalOpen && (
-                <ColumnSelectorModal
-                    selectedColumns={selectedColumns}
-                    setSelectedColumns={setSelectedColumns}
-                    availableColumns={availableColumns}
-                    closeModal={closeModal}
-                />
-            )}
+            <dialog ref={modalRef} className="column-selector-modal">
+                {isModalOpen && (
+                    <ColumnSelectorModal
+                        selectedColumns={selectedColumns}
+                        setSelectedColumns={setSelectedColumns}
+                        availableColumns={availableColumns}
+                        closeModal={closeModal}
+                    />
+                )}    
+            </dialog>
         </div>
     )
 }
