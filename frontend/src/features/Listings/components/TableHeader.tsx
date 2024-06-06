@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import './Listings.css';
 
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-import ColumnSelectorModal from './ColumnSelectorModal.tsx';
-import { handleColumnChange } from './../utils/handleColumnChange.tsx';
+import { ColumnSelectorDialog}  from '../../ColumnSelectorDialog/index.js';
 import handleDecrement from './../utils/handleDecrement.tsx';
 import handleIncrement from './../utils/handleIncrement.tsx';
 
@@ -31,17 +30,9 @@ const availableColumns = [
 ]
 
 function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: TableHeaderProps) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const modalRef = useRef<HTMLDialogElement>(null);
-
-    const openModal = () => {
-        setIsModalOpen(true);
-        modalRef.current?.showModal();
-    };
-    const closeModal = () => {
-        setIsModalOpen(false);
-        modalRef.current?.close();
-    };
+    const openModal = () => modalRef.current?.showModal();
+    const closeModal = () => modalRef.current?.close();
 
     return (
         <div className="contain-tableheader">
@@ -59,14 +50,12 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: Tab
                 <button onClick={openModal}>Select Columns</button>
             </div>
             <dialog ref={modalRef} className="column-selector-modal">
-                {isModalOpen && (
-                    <ColumnSelectorModal
-                        selectedColumns={selectedColumns}
-                        setSelectedColumns={setSelectedColumns}
-                        availableColumns={availableColumns}
-                        closeModal={closeModal}
-                    />
-                )}    
+                <ColumnSelectorDialog
+                    selectedColumns={selectedColumns}
+                    setSelectedColumns={setSelectedColumns}
+                    availableColumns={availableColumns}
+                    closeModal={closeModal}
+                />
             </dialog>
         </div>
     )

@@ -1,0 +1,29 @@
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.modal-container .modal-content {
+  display: flex;
+  flex-direction: column;
+}
+.modal-container .modal-content h2 {
+  margin-bottom: 10px;
+}
+.modal-container .modal-content div {
+  margin-bottom: 10px;
+}
+.modal-container .modal-content div input {
+  margin-right: 5px;
+}
+.modal-container .modal-content button {
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=ColumnSelectorDialog.css.map */
