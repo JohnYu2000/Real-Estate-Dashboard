@@ -3,6 +3,7 @@ import './Listings.css';
 
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 import { ColumnSelectorDialog}  from '../../ColumnSelectorDialog/index.js';
 import handleDecrement from './../utils/handleDecrement.tsx';
@@ -47,7 +48,15 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: Tab
                 </div>
             </div>
             <div className="column-selector">
-                <button onClick={openModal}>Select Columns</button>
+                {/* <button onClick={openModal}>Select Columns</button> */}
+                <AssignmentIcon
+                    style={{
+                        'fontSize': '36px',
+                        'color': 'white',
+                        'alignSelf': 'flex-end',
+                    }}
+                    onClick={openModal}
+                />
             </div>
             <dialog ref={modalRef} className="column-selector-modal">
                 <ColumnSelectorDialog
