@@ -4,6 +4,7 @@ import './Listings.css';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 import { ColumnSelectorDialog}  from '../../ColumnSelectorDialog/index.js';
 import handleDecrement from './../utils/handleDecrement.tsx';
@@ -47,8 +48,7 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: Tab
                     <div className="pagination-button" onClick={() => handleIncrement(page, setPage)}><NavigateNextIcon /></div>    
                 </div>
             </div>
-            <div className="column-selector">
-                {/* <button onClick={openModal}>Select Columns</button> */}
+            <div className="icon-selector">
                 <AssignmentIcon
                     style={{
                         'fontSize': '36px',
@@ -56,6 +56,15 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: Tab
                         'alignSelf': 'flex-end',
                     }}
                     onClick={openModal}
+                />
+            </div>
+            <div className="icon-selector">
+                <FilterAltIcon
+                    style={{
+                        'fontSize': '36px',
+                        'color': 'white',
+                        'alignSelf': 'flex-end'
+                    }}
                 />
             </div>
             <dialog ref={modalRef} className="column-selector-modal">
