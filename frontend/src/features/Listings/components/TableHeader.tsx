@@ -7,6 +7,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 import { ColumnSelectorDialog}  from '../../ColumnSelectorDialog/index.js';
+import { FilterListingsDialog} from '../../FilterListingsDialog/index.js';
 import handleDecrement from './../utils/handleDecrement.tsx';
 import handleIncrement from './../utils/handleIncrement.tsx';
 
