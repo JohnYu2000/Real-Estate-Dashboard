@@ -7,14 +7,26 @@ import handleCancel from './../utils/handleCancel.tsx';
 interface ColumnSelectorDialogProps {
     selectedColumns: string[];
     setSelectedColumns: (columns: string[]) => void;
-    availableColumns: string[];
     closeModal: () => void;
 }
+
+const availableColumns = [
+    'Listing ID',
+    'City',
+    'Price',
+    'Address',
+    'Number of Beds',
+    'Number of Baths',
+    'Province',
+    'Population',
+    'Latitude',
+    'Longitude',
+    'Median Family Income'
+]
 
 const ColumnSelectorDialog: React.FC<ColumnSelectorDialogProps> = ({
     selectedColumns,
     setSelectedColumns,
-    availableColumns,
     closeModal
 }) => {
     const [tempSelectedColumns, setTempSelectedColumns] = useState<string[]>(selectedColumns);
