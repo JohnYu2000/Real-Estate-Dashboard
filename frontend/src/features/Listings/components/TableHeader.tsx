@@ -18,20 +18,6 @@ interface TableHeaderProps {
     setSelectedColumns: (columns: string[]) => void;
 }
 
-const availableColumns = [
-    'Listing ID',
-    'City',
-    'Price',
-    'Address',
-    'Number of Beds',
-    'Number of Baths',
-    'Province',
-    'Population',
-    'Latitude',
-    'Longitude',
-    'Median Family Income'
-]
-
 function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: TableHeaderProps) {
     const modalRef = useRef<HTMLDialogElement>(null);
     const openModal = () => modalRef.current?.showModal();
@@ -72,7 +58,6 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: Tab
                 <ColumnSelectorDialog
                     selectedColumns={selectedColumns}
                     setSelectedColumns={setSelectedColumns}
-                    availableColumns={availableColumns}
                     closeModal={closeModal}
                 />
             </dialog>
