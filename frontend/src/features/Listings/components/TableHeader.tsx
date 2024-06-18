@@ -6,8 +6,8 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
-import { ColumnSelectorDialog}  from '../../ColumnSelectorDialog/index.js';
-import { FilterListingsDialog} from '../../FilterListingsDialog/index.js';
+import { ColumnSelectorDialog }  from '../../ColumnSelectorDialog/index.js';
+import { FilterListingsDialog } from '../../FilterListingsDialog/index.js';
 import handleDecrement from './../utils/handleDecrement.tsx';
 import handleIncrement from './../utils/handleIncrement.tsx';
 
@@ -16,12 +16,19 @@ interface TableHeaderProps {
     setPage: (page: number) => void;
     selectedColumns: string[];
     setSelectedColumns: (columns: string[]) => void;
+    filters: any;
+    setFilters: (filters: any) => void;
 }
 
-function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: TableHeaderProps) {
-    const modalRef = useRef<HTMLDialogElement>(null);
-    const openModal = () => modalRef.current?.showModal();
-    const closeModal = () => modalRef.current?.close();
+function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filters, setFilters }: TableHeaderProps) {
+    const columnModalRef = useRef<HTMLDialogElement>(null);
+    const filterModalRef = useRef<HTMLDialogElement>(null);
+
+    const openColumnModal = () => columnModalRef.current?.showModal();
+    const closeColumnModal = () => columnModalRef.current?.close();
+
+    const openFilterModal = () => filterModalRef.current?.showModal();
+    const closeFilterModal = () => filterModalRef.current?.close();
 
     return (
         <div className="contain-tableheader">
@@ -42,7 +49,7 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: Tab
                         'color': 'white',
                         'alignSelf': 'flex-end',
                     }}
-                    onClick={openModal}
+                    onClick={openColumnModal}
                 />
             </div>
             <div className="icon-selector">
@@ -52,13 +59,21 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns }: Tab
                         'color': 'white',
                         'alignSelf': 'flex-end'
                     }}
+                    onClick={openFilterModal}
                 />
             </div>
-            <dialog ref={modalRef} className="column-selector-modal">
+            <dialog ref={columnModalRef} className="column-selector-modal">
                 <ColumnSelectorDialog
                     selectedColumns={selectedColumns}
                     setSelectedColumns={setSelectedColumns}
-                    closeModal={closeModal}
+                    closeModal={closeColumnModal}
+                />
+            </dialog>
+            <dialog ref={filterModalRef} className="filter-selector-modal">
+                <FilterListingsDialog
+                    filters={filters}
+                    setFilters={setFilters}
+                    closeModal={closeFilterModal}
                 />
             </dialog>
         </div>
