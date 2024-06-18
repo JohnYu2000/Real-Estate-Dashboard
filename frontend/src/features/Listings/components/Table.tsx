@@ -18,12 +18,23 @@ function Table() {
         'Latitude',
         'Longitude',
         'Median Family Income'
-    ])
+    ]);
+    const [filters, setFilters] = useState({});
 
     return (
         <div className="contain-table">
-            <TableHeader page={page} setPage={setPage} selectedColumns={selectedColumns} setSelectedColumns={setSelectedColumns} />
-            <TableContent page={page} selectedColumns={selectedColumns} />
+            <TableHeader
+                page={page}
+                setPage={setPage}
+                selectedColumns={selectedColumns}
+                setSelectedColumns={setSelectedColumns}
+                filters={filters}
+                setFilters={setFilters}
+            />
+            <TableContent
+                page={page}
+                selectedColumns={selectedColumns}
+            />
         </div>
     )
 }
