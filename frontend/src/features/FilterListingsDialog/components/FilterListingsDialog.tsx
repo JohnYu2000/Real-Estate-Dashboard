@@ -31,8 +31,8 @@ function FilterListingsDialog({
     const [tempFilters, setTempFilters] = useState(filters);
 
     return (
-        <div className="modal-container">
-            <div className="modal-content">
+        <div className="filter-modal-container">
+            <div className="filter-modal-content">
                 <h2>Filter Listings</h2>
                 <div>
                     <label>City</label>
