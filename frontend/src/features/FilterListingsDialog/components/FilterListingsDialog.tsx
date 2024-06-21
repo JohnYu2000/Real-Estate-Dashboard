@@ -73,16 +73,16 @@ function FilterListingsDialog({
                     <label>Number of Beds</label>
                     <input
                         type="number"
-                        name="minBeds"
+                        name="minNumberBeds"
                         placeholder="Min"
-                        value={tempFilters.minBeds || ''}
+                        value={tempFilters.minNumberBeds || ''}
                         onChange={(e) => handleInputChange(e, tempFilters, setTempFilters)}
                     />
                     <input
                         type="number"
-                        name="maxBeds"
+                        name="maxNumberBeds"
                         placeholder="Max"
-                        value={tempFilters.maxBeds || ''}
+                        value={tempFilters.maxNumberBeds || ''}
                         onChange={(e) => handleInputChange(e, tempFilters, setTempFilters)}
                     />
                 </div>
@@ -90,16 +90,16 @@ function FilterListingsDialog({
                     <label>Number of Baths</label>
                     <input
                         type="number"
-                        name="minBaths"
+                        name="minNumberBaths"
                         placeholder="Min"
-                        value={tempFilters.minBaths || ''}
+                        value={tempFilters.minNumberBaths || ''}
                         onChange={(e) => handleInputChange(e, tempFilters, setTempFilters)}
                     />
                     <input
                         type="number"
-                        name="maxBaths"
+                        name="maxNumberBaths"
                         placeholder="Max"
-                        value={tempFilters.maxBaths || ''}
+                        value={tempFilters.maxNumberBaths || ''}
                         onChange={(e) => handleInputChange(e, tempFilters, setTempFilters)}
                     />
                 </div>
@@ -171,16 +171,16 @@ function FilterListingsDialog({
                     <label>Median Family Income</label>
                     <input
                         type="number"
-                        name="minIncome"
+                        name="minMedianFamilyIncome"
                         placeholder="Min"
-                        value={tempFilters.minIncome || ''}
+                        value={tempFilters.minMedianFamilyIncome || ''}
                         onChange={(e) => handleInputChange(e, tempFilters, setTempFilters)}
                     />
                     <input
                         type="number"
-                        name="maxIncome"
+                        name="maxMedianFamilyIncome"
                         placeholder="Max"
-                        value={tempFilters.maxIncome || ''}
+                        value={tempFilters.maxMedianFamilyIncome || ''}
                         onChange={(e) => handleInputChange(e, tempFilters, setTempFilters)}
                     />
                 </div>

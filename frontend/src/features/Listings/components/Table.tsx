@@ -34,6 +34,7 @@ function Table() {
             <TableContent
                 page={page}
                 selectedColumns={selectedColumns}
+                filters={filters}
             />
         </div>
     )

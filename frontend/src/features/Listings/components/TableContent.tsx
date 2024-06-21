@@ -5,10 +5,11 @@ import useListings from './../../../hooks/useListing.tsx';
 interface TableContentProps {
     page: number;
     selectedColumns: string[];
+    filters: any;
 }
 
-function TableContent({ page, selectedColumns }: TableContentProps) {
-    const queryParams = useMemo(() => ({ page }), [page]);
+function TableContent({ page, selectedColumns, filters }: TableContentProps) {
+    const queryParams = useMemo(() => ({ page, ...filters }), [page, filters]);
 
     const { listings, loading, error } = useListings(queryParams);
 
