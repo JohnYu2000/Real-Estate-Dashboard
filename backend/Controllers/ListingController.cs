@@ -1,3 +1,4 @@
+using DatabaseNamespace.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -111,6 +112,19 @@ namespace DatabaseNamespace.Controllers {
             var listings = await query.Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
             return listings;
+        }
+
+        [Authorize]
+        [HttpPost("listing")]
+        public async Task<ActionResult<ListingInfo>> AddListing([FromBody] Listing newListing) {
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+
+            _context.Listings.Add(newListing);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetListings), new { id = newListing.Id }, newListing);
         }
     }
 }
