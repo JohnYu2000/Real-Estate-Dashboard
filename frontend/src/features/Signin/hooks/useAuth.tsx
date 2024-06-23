@@ -22,7 +22,7 @@ const useAuth = () => {
         setLoading(true);
         setError(null);
         try {
-            const response = await axios.post<LoginResponse>('/api/auth/login', { email, password });
+            const response = await axios.post<LoginResponse>('/api/login', { email, password });
             if (response.data.token) {
                 contextLogin(response.data.token, response.data.username);
             }

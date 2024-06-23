@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseNamespace.Controllers {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api")]
     public class ListingController : ControllerBase {
         private readonly DataContext _context;
 
@@ -16,7 +16,7 @@ namespace DatabaseNamespace.Controllers {
         }
 
         [Authorize]
-        [HttpGet]
+        [HttpGet("listings")]
         public async Task<ActionResult<IEnumerable<Listing>>> GetListings(
             [FromQuery] string? city = null,
             [FromQuery] decimal? minPrice = null,
