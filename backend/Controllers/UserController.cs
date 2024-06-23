@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DatabaseNamespace.Controllers {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api")]
     public class UserController : ControllerBase {
         private readonly DataContext _context;
 
@@ -15,8 +15,8 @@ namespace DatabaseNamespace.Controllers {
         }
 
         [Authorize]
-        [HttpGet("getuserbyusername")]
-        public async Task<IActionResult> GetUserByUsername([FromQuery] string username) {
+        [HttpGet("user")]
+        public async Task<IActionResult> GetUser([FromQuery] string username) {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.username == username);
 
             if (user == null) {

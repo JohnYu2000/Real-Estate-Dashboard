@@ -47,7 +47,7 @@ const useListings = (queryParams: FetchListingsParams) => {
             try {
                 setLoading(true);
                 const token = localStorage.getItem('token');
-                const response = await axios.get<Listing[]>('/api/listing', {
+                const response = await axios.get<Listing[]>('/api/listings', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

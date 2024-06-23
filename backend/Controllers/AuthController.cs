@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace DatabaseNamespace.Controllers {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api")]
     public class AuthController : ControllerBase {
         private readonly DataContext _context;
         private readonly IConfiguration _configuration;
