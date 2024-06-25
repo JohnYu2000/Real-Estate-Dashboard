@@ -5,6 +5,7 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import AddIcon from '@mui/icons-material/Add';
 
 import { ColumnSelectorDialog }  from '../../ColumnSelectorDialog/index.js';
 import { FilterListingsDialog } from '../../FilterListingsDialog/index.js';
@@ -23,12 +24,16 @@ interface TableHeaderProps {
 function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filters, setFilters }: TableHeaderProps) {
     const columnModalRef = useRef<HTMLDialogElement>(null);
     const filterModalRef = useRef<HTMLDialogElement>(null);
+    const addModalRef = useRef<HTMLDialogElement>(null);
 
     const openColumnModal = () => columnModalRef.current?.showModal();
     const closeColumnModal = () => columnModalRef.current?.close();
 
     const openFilterModal = () => filterModalRef.current?.showModal();
     const closeFilterModal = () => filterModalRef.current?.close();
+
+    const openAddModal = () => addModalRef.current?.showModal();
+    const closeAddModal = () => addModalRef.current?.close();
 
     return (
         <div className="contain-tableheader">
@@ -60,6 +65,16 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                         'alignSelf': 'flex-end'
                     }}
                     onClick={openFilterModal}
+                />
+            </div>
+            <div className="icon-selector">
+                <AddIcon
+                    style={{
+                        'fontSize': '36px',
+                        'color': 'white',
+                        'alignSelf': 'flex-end'
+                    }}
+                    onClick={openAddModal}
                 />
             </div>
             <dialog ref={columnModalRef} className="column-selector-modal">
