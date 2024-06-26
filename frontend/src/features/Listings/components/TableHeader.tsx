@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 import { ColumnSelectorDialog }  from '../../ColumnSelectorDialog/index.js';
 import { FilterListingsDialog } from '../../FilterListingsDialog/index.js';
+import { AddListingDialog } from '../../AddListingDialog/index.js';
 import handleDecrement from './../utils/handleDecrement.tsx';
 import handleIncrement from './../utils/handleIncrement.tsx';
 
