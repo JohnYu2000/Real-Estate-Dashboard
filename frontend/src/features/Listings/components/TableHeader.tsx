@@ -92,6 +92,11 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                     closeModal={closeFilterModal}
                 />
             </dialog>
+            <dialog ref={addModalRef} className="add-selector-modal">
+                <AddListingDialog
+                    closeModal={closeAddModal}
+                />
+            </dialog>
         </div>
     )
 }
