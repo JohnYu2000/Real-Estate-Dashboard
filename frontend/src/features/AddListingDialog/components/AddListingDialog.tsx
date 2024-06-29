@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AddListingDialog.css';
-import { handleSave } from './../utils/handleSave.tsx'
 import { handleCancel } from './../utils/handleCancel.tsx'
+import { handleChange } from './../utils/handleChange.tsx';
+import { handleSave } from './../utils/handleSave.tsx'
 
 interface AddListingDialogProps {
     closeModal: () => void;
@@ -23,85 +24,55 @@ const provinces = [
 function AddListingDialog({
     closeModal
 }: AddListingDialogProps) {
+    const [formData, setFormData] = useState({
+        city: '',
+        price: '',
+        address: '',
+        numberBeds: '',
+        numberBaths: '',
+        province: '',
+        population: '',
+        latitude: '',
+        longitude: '',
+        medianFamilyIncome: ''
+    })
+    const fieldNames = {
+        city: 'City',
+        price: 'Price',
+        address: 'Address',
+        numberBeds: 'Number of Beds',
+        numberBaths: 'Number of Baths',
+        province: 'Province',
+        population: 'Population',
+        latitude: 'Latitude',
+        longitude: 'Longitude',
+        medianFamilyIncome: 'Median Family Income'
+    }
     return (
         <div className="add-modal-container">
             <div className="add-modal-content">
                 <h2>Add Listing</h2>
-                <div>
-                    <label className="required">City</label>
-                    <input
-                        type="text"
-                        name="city"
-                    />
-                </div>
-                <div>
-                    <label className="required">Price</label>
-                    <input
-                        type="number"
-                        name="price"
-                    />
-                </div>
-                <div>
-                    <label className="required">Address</label>
-                    <input
-                        type="text"
-                        name="address"
-                    />
-                </div>
-                <div>
-                    <label className="required">Number of Beds</label>
-                    <input
-                        type="number"
-                        name="numberBeds"
-                    />
-                </div>
-                <div>
-                    <label className="required">Number of Baths</label>
-                    <input
-                        type="number"
-                        name="numberBaths"
-                    />
-                </div>
-                <div>
-                    <label className="required">Province</label>
-                    <select
-                        name="province"
-                    >
-                        <option value="">Select Province</option>
-                        {provinces.map(province => (
-                            <option key={province} value={province}>{province}</option>
-                        ))}
-                    </select>
-                </div>
-                <div>
-                    <label className="required">Population</label>
-                    <input
-                        type="number"
-                        name="population"
-                    />
-                </div>
-                <div>
-                    <label className="required">Latitude</label>
-                    <input
-                        type="number"
-                        name="latitude"
-                    />
-                </div>
-                <div>
-                    <label className="required">Longitude</label>
-                    <input
-                        type="number"
-                        name="longitude"
-                    />
-                </div>
-                <div>
-                    <label className="required">Median Family Income</label>
-                    <input
-                        type="number"
-                        name="medianFamilyIncome"
-                    />
-                </div>
-                <button onClick={() => handleSave(closeModal)}>Save</button>
+                {Object.keys(formData).map((field) => (
+                    <div key={field}>
+                        <label className="required">{fieldNames[field]}</label>
+                        {field === 'province' ? (
+                            <select name={field} value={formData[field]} onChange={(e) => handleChange(e, formData, setFormData)}>
+                                <option value="">Select Province</option>
+                                {provinces.map(province => (
+                                    <option key={province} value={province}>{province}</option>
+                                ))}
+                            </select>
+                        ) : (
+                            <input
+                                type={field === 'price' || field.includes('number') || field.includes('Population') || field.includes('Latitude') || field.includes('Longitude') || field.includes('Income') ? 'number' : 'text'}
+                                name={field}
+                                value={formData[field]}
+                                onChange={(e) => handleChange(e, formData, setFormData)}
+                            />
+                        )}
+                    </div>
+                ))}
+                <button onClick={() => handleSave(formData, closeModal)}>Save</button>
                 <button onClick={() => handleCancel(closeModal)}>Cancel</button>
             </div>
         </div>
