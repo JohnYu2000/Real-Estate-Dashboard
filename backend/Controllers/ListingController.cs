@@ -126,5 +126,46 @@ namespace DatabaseNamespace.Controllers {
 
             return CreatedAtAction(nameof(GetListings), new { id = newListing.Id }, newListing);
         }
+
+        [Authorize]
+        [HttpPut("listing")]
+        public async Task<IActionResult> UpdateListing([FromQuery] int id, [FromBody] Listing updatedListing) {
+            
+            if (id != updatedListing.Id) {
+                return BadRequest("Listing ID mismatch");
+            }
+
+            var existingListing = await _context.Listings.FindAsync(id);
+            if (existingListing == null) {
+                return NotFound();
+            }
+
+            existingListing.City = updatedListing.City;
+            existingListing.Price = updatedListing.Price;
+            existingListing.Address = updatedListing.Address;
+            existingListing.NumberBeds = updatedListing.NumberBeds;
+            existingListing.NumberBaths = updatedListing.NumberBaths;
+            existingListing.Province = updatedListing.Province;
+            existingListing.Population = updatedListing.Population;
+            existingListing.Latitude = updatedListing.Latitude;
+            existingListing.Longitude = updatedListing.Longitude;
+            existingListing.MedianFamilyIncome = updatedListing.MedianFamilyIncome;
+
+            try {
+                await _context.SaveChangesAsync();
+            } catch (DbUpdateConcurrencyException) {
+                if (!ListingExists(id)) {
+                    return NotFound();
+                } else {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        private bool ListingExists(int id) {
+            return _context.Listings.Any(e => e.Id == id);
+        }
     }
 }
