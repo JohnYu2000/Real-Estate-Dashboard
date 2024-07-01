@@ -6,6 +6,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
 
 import { ColumnSelectorDialog }  from '../../ColumnSelectorDialog/index.js';
 import { FilterListingsDialog } from '../../FilterListingsDialog/index.js';
@@ -26,6 +27,7 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
     const columnModalRef = useRef<HTMLDialogElement>(null);
     const filterModalRef = useRef<HTMLDialogElement>(null);
     const addModalRef = useRef<HTMLDialogElement>(null);
+    const editModalRef = useRef<HTMLDialogElement>(null);
 
     const openColumnModal = () => columnModalRef.current?.showModal();
     const closeColumnModal = () => columnModalRef.current?.close();
@@ -35,6 +37,9 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
 
     const openAddModal = () => addModalRef.current?.showModal();
     const closeAddModal = () => addModalRef.current?.close();
+
+    const openEditModal = () => editModalRef.current?.showModal();
+    const closeEditModal = () => editModalRef.current?.close();
 
     return (
         <div className="contain-tableheader">
@@ -77,6 +82,16 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                     }}
                     onClick={openAddModal}
                 />
+            </div>
+            <div className="icon-selector">
+                    <EditIcon
+                        style={{
+                            'fontSize': '36px',
+                            'color': 'white',
+                            'alignSelf': 'flex-end'
+                        }}
+                        onClick={openEditModal}
+                    />
             </div>
             <dialog ref={columnModalRef} className="column-selector-modal">
                 <ColumnSelectorDialog
