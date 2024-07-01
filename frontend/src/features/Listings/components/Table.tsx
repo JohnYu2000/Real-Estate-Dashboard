@@ -20,6 +20,7 @@ function Table() {
         'Median Family Income'
     ]);
     const [filters, setFilters] = useState({});
+    const [selectedRow, setSelectedRow] = useState(null);
 
     return (
         <div className="contain-table">
@@ -30,11 +31,14 @@ function Table() {
                 setSelectedColumns={setSelectedColumns}
                 filters={filters}
                 setFilters={setFilters}
+                selectedRow={selectedRow}
             />
             <TableContent
                 page={page}
                 selectedColumns={selectedColumns}
                 filters={filters}
+                selectedRow={selectedRow}
+                setSelectedRow={setSelectedRow}
             />
         </div>
     )

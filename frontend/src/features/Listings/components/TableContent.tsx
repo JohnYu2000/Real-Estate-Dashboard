@@ -1,14 +1,17 @@
 import React, { useMemo } from 'react';
 import './Listings.css';
 import useListings from './../../../hooks/useListing.tsx';
+import handleRowClick from './../utils/handleRowClick.tsx';
 
 interface TableContentProps {
     page: number;
     selectedColumns: string[];
     filters: any;
+    selectedRow: any;
+    setSelectedRow: (row: any) => void;
 }
 
-function TableContent({ page, selectedColumns, filters }: TableContentProps) {
+function TableContent({ page, selectedColumns, filters, selectedRow, setSelectedRow }: TableContentProps) {
     const queryParams = useMemo(() => ({ page, ...filters }), [page, filters]);
 
     const { listings, loading, error } = useListings(queryParams);
@@ -41,7 +44,14 @@ function TableContent({ page, selectedColumns, filters }: TableContentProps) {
                 </thead>
                 <tbody>
                     {listings.map((listing) => (
-                        <tr key={listing.id}>
+                        <tr
+                            key={listing.id}
+                            onClick={() => handleRowClick(listing, selectedRow, setSelectedRow)}
+                            style={{
+                                backgroundColor: selectedRow?.id === listing.id ? '#0C6DFD' : '#efefef',
+                                color: selectedRow?.id === listing.id ? 'white' : 'black'
+                            }}
+                        >
                             {selectedColumns.includes('Listing ID') && <td>{listing.id}</td>}
                             {selectedColumns.includes('City') && <td>{listing.city}</td>}
                             {selectedColumns.includes('Price') && <td>{listing.price}</td>}
