@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Listings.css';
 
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -21,9 +21,10 @@ interface TableHeaderProps {
     setSelectedColumns: (columns: string[]) => void;
     filters: any;
     setFilters: (filters: any) => void;
+    selectedRow: any;
 }
 
-function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filters, setFilters }: TableHeaderProps) {
+function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filters, setFilters, selectedRow }: TableHeaderProps) {
     const columnModalRef = useRef<HTMLDialogElement>(null);
     const filterModalRef = useRef<HTMLDialogElement>(null);
     const addModalRef = useRef<HTMLDialogElement>(null);
@@ -40,6 +41,10 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
 
     const openEditModal = () => editModalRef.current?.showModal();
     const closeEditModal = () => editModalRef.current?.close();
+
+    useEffect(() => {
+        console.log(selectedRow);
+    }, [selectedRow])
 
     return (
         <div className="contain-tableheader">
