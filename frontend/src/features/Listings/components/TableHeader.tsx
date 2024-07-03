@@ -11,6 +11,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { ColumnSelectorDialog }  from '../../ColumnSelectorDialog/index.js';
 import { FilterListingsDialog } from '../../FilterListingsDialog/index.js';
 import { AddListingDialog } from '../../AddListingDialog/index.js';
+import { EditListingDialog } from '../../EditListingDialog/index.js';
 import handleDecrement from './../utils/handleDecrement.tsx';
 import handleIncrement from './../utils/handleIncrement.tsx';
 
