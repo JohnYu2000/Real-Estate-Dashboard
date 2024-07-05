@@ -120,6 +120,7 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
             </dialog>
             <dialog ref={editModalRef} className="edit-selector-modal">
                 <EditListingDialog
+                    closeModal={closeEditModal}
                 />
             </dialog>
         </div>
