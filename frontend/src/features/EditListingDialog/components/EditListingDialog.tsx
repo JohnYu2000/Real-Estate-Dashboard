@@ -26,42 +26,42 @@ function EditListingDialog({
             <div className="edit-modal-content">
                 <h2>Edit Listing</h2>
                 <div>
-                    <label>City</label>
+                    <label className="required">City</label>
                     <input
                         type="text"
                         name="city"
                     />
                 </div>
                 <div>
-                    <label>Price</label>
+                    <label className="required">Price</label>
                     <input
                         type="number"
                         name="price"
                     />
                 </div>
                 <div>
-                    <label>Address</label>
+                    <label className="required">Address</label>
                     <input
                         type="text"
                         name="address"
                     />
                 </div>
                 <div>
-                    <label>Number of Beds</label>
+                    <label className="required">Number of Beds</label>
                     <input
                         type="number"
                         name="numberBeds"
                     />
                 </div>
                 <div>
-                    <label>Number of Baths</label>
+                    <label className="required">Number of Baths</label>
                     <input
                         type="number"
                         name="numberBaths"
                     />
                 </div>
                 <div>
-                    <label>Province</label>
+                    <label className="required">Province</label>
                     <select
                         name="province"
                     >
@@ -72,28 +72,28 @@ function EditListingDialog({
                     </select>
                 </div>
                 <div>
-                    <label>Population</label>
+                    <label className="required">Population</label>
                     <input
                         type="number"
                         name="population"
                     />
                 </div>
                 <div>
-                    <label>Latitude</label>
+                    <label className="required">Latitude</label>
                     <input
                         type="number"
                         name="latitude"
                     />
                 </div>
                 <div>
-                    <label>Longitude</label>
+                    <label className="required">Longitude</label>
                     <input
                         type="number"
                         name="longitude"
                     />
                 </div>
                 <div>
-                    <label>Median Family Income</label>
+                    <label className="required">Median Family Income</label>
                     <input
                         type="number"
                         name="medianFamilyIncome"
