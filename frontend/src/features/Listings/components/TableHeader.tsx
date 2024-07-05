@@ -118,6 +118,10 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                     closeModal={closeAddModal}
                 />
             </dialog>
+            <dialog ref={editModalRef} className="edit-selector-modal">
+                <EditListingDialog
+                />
+            </dialog>
         </div>
     )
 }
