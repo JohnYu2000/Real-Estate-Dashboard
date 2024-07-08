@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './EditListingDialog.css'
+import { handleCancel } from '../utils/handleCancel.tsx'
+import { handleChange } from '../utils/handleChange.tsx';
+import { handleSave } from '../utils/handleSave.tsx';
 
 interface EditListingDialogProps {
+    selectedRow: any,
     closeModal: () => void;
 }
 
@@ -19,8 +23,41 @@ const provinces = [
 ]
 
 function EditListingDialog({
+    selectedRow,
     closeModal
 }: EditListingDialogProps) {
+    const [formData, setFormData] = useState({
+        id: '',
+        city: '',
+        price: '',
+        address: '',
+        numberBeds: '',
+        numberBaths: '',
+        province: '',
+        population: '',
+        latitude: '',
+        longitude: '',
+        medianFamilyIncome: ''
+    })
+
+    useEffect(() => {
+        if (selectedRow) {
+            setFormData({
+                id: selectedRow.id || '',
+                city: selectedRow.city || '',
+                price: selectedRow.price || '',
+                address: selectedRow.address || '',
+                numberBeds: selectedRow.numberBeds || '',
+                numberBaths: selectedRow.numberBaths || '',
+                province: selectedRow.province || '',
+                population: selectedRow.population || '',
+                latitude: selectedRow.latitude || '',
+                longitude: selectedRow.longitude || '',
+                medianFamilyIncome: selectedRow.medianFamilyIncome || ''
+            });
+        }
+    }, [selectedRow]);
+
     return (
         <div className="edit-modal-container">
             <div className="edit-modal-content">
@@ -30,6 +67,8 @@ function EditListingDialog({
                     <input
                         type="text"
                         name="city"
+                        value={formData.city}
+                        onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
                 <div>
@@ -37,6 +76,8 @@ function EditListingDialog({
                     <input
                         type="number"
                         name="price"
+                        value={formData.price}
+                        onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
                 <div>
@@ -44,6 +85,8 @@ function EditListingDialog({
                     <input
                         type="text"
                         name="address"
+                        value={formData.address}
+                        onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
                 <div>
@@ -51,6 +94,8 @@ function EditListingDialog({
                     <input
                         type="number"
                         name="numberBeds"
+                        value={formData.numberBeds}
+                        onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
                 <div>
@@ -58,12 +103,16 @@ function EditListingDialog({
                     <input
                         type="number"
                         name="numberBaths"
+                        value={formData.numberBaths}
+                        onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
                 <div>
                     <label className="required">Province</label>
                     <select
                         name="province"
+                        value={formData.province}
+                        onChange={(e) => handleChange(e, setFormData)}
                     >
                         <option value="">Select Province</option>
                         {provinces.map(province => (
@@ -76,6 +125,8 @@ function EditListingDialog({
                     <input
                         type="number"
                         name="population"
+                        value={formData.population}
+                        onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
                 <div>
@@ -83,6 +134,8 @@ function EditListingDialog({
                     <input
                         type="number"
                         name="latitude"
+                        value={formData.latitude}
+                        onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
                 <div>
@@ -90,6 +143,8 @@ function EditListingDialog({
                     <input
                         type="number"
                         name="longitude"
+                        value={formData.longitude}
+                        onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
                 <div>
@@ -97,10 +152,12 @@ function EditListingDialog({
                     <input
                         type="number"
                         name="medianFamilyIncome"
+                        value={formData.medianFamilyIncome}
+                        onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
-                <button>Save</button>
-                <button>Cancel</button>
+                <button onClick={() => handleSave(formData, closeModal)}>Save</button>
+                <button onClick={() => handleCancel(closeModal)}>Cancel</button>
             </div>
         </div>
     )

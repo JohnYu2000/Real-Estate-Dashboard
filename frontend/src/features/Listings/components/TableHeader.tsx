@@ -43,10 +43,6 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
     const openEditModal = () => editModalRef.current?.showModal();
     const closeEditModal = () => editModalRef.current?.close();
 
-    useEffect(() => {
-        console.log(selectedRow);
-    }, [selectedRow])
-
     return (
         <div className="contain-tableheader">
             <div className="pagination-component">
@@ -120,6 +116,7 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
             </dialog>
             <dialog ref={editModalRef} className="edit-selector-modal">
                 <EditListingDialog
+                    selectedRow={selectedRow}
                     closeModal={closeEditModal}
                 />
             </dialog>
