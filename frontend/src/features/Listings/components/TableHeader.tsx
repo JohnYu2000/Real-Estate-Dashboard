@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import './Listings.css';
 
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
