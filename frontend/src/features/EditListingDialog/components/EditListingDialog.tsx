@@ -157,7 +157,7 @@ function EditListingDialog({
                     />
                 </div>
                 <button onClick={() => handleSave(formData, closeModal)}>Save</button>
-                <button onClick={() => handleCancel(closeModal)}>Cancel</button>
+                <button onClick={() => handleCancel(selectedRow, setFormData, closeModal)}>Cancel</button>
             </div>
         </div>
     )
