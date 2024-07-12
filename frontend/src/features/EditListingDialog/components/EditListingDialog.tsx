@@ -40,6 +40,19 @@ function EditListingDialog({
         medianFamilyIncome: ''
     })
 
+    const [errors, setErrors] = useState({
+        city: '',
+        price: '',
+        address: '',
+        numberBeds: '',
+        numberBaths: '',
+        province: '',
+        population: '',
+        latitude: '',
+        longitude: '',
+        medianFamilyIncome: ''
+    })
+
     useEffect(() => {
         if (selectedRow) {
             setFormData({
@@ -156,7 +169,7 @@ function EditListingDialog({
                         onChange={(e) => handleChange(e, setFormData)}
                     />
                 </div>
-                <button onClick={() => handleSave(formData, closeModal)}>Save</button>
+                <button onClick={() => handleSave(formData, closeModal, setErrors)}>Save</button>
                 <button onClick={() => handleCancel(selectedRow, setFormData, closeModal)}>Cancel</button>
             </div>
         </div>
