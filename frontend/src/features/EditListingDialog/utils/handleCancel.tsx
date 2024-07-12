@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const handleCancel = (selectedRow: any, setFormData: React.Dispatch<React.SetStateAction<any>>, closeModal: () => void) => {
     if (selectedRow) {
         setFormData({
