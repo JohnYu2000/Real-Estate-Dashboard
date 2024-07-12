@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
 import './Listings.css';
 
+import AddIcon from '@mui/icons-material/Add';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
 
 import { ColumnSelectorDialog }  from '../../ColumnSelectorDialog/index.js';
 import { FilterListingsDialog } from '../../FilterListingsDialog/index.js';
@@ -86,14 +87,23 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                 />
             </div>
             <div className="icon-selector">
-                    <EditIcon
-                        style={{
-                            'fontSize': '36px',
-                            'color': 'white',
-                            'alignSelf': 'flex-end'
-                        }}
-                        onClick={openEditModal}
-                    />
+                <EditIcon
+                    style={{
+                        'fontSize': '36px',
+                        'color': 'white',
+                        'alignSelf': 'flex-end'
+                    }}
+                    onClick={openEditModal}
+                />
+            </div>
+            <div className="icon-selector">
+                <DeleteIcon
+                    style={{
+                        'fontSize': '36px',
+                        'color': 'white',
+                        'alignSelf': 'flex-end'
+                    }}
+                />
             </div>
             <dialog ref={columnModalRef} className="column-selector-modal">
                 <ColumnSelectorDialog

@@ -83,6 +83,7 @@ function EditListingDialog({
                         value={formData.city}
                         onChange={(e) => handleChange(e, setFormData)}
                     />
+                    {/* {errors.city && <span className="error">{errors.city}</span>} */}
                 </div>
                 <div>
                     <label className="required">Price</label>
