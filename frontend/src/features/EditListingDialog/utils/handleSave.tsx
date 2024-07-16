@@ -1,6 +1,6 @@
 import React from 'react';
 import { editListing } from './api.tsx';
-import { validateForm } from './validateForm.tsx';
+import { validateForm } from '../../../utils/validateForm.tsx';
 
 interface Errors {
     city: string;
