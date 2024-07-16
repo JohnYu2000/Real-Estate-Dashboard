@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AddListingDialog.css';
 import { handleCancel } from './../utils/handleCancel.tsx'
 import { handleChange } from './../utils/handleChange.tsx';
@@ -36,6 +36,20 @@ function AddListingDialog({
         longitude: '',
         medianFamilyIncome: ''
     })
+
+    const [errors, setErrors] = useState({
+        city: '',
+        price: '',
+        address: '',
+        numberBeds: '',
+        numberBaths: '',
+        province: '',
+        population: '',
+        latitude: '',
+        longitude: '',
+        medianFamilyIncome: ''
+    })
+
     const fieldNames = {
         city: 'City',
         price: 'Price',
@@ -48,6 +62,13 @@ function AddListingDialog({
         longitude: 'Longitude',
         medianFamilyIncome: 'Median Family Income'
     }
+
+    // ----- Delete this later ----- //
+    useEffect(() => {
+        console.log(errors);
+    }, [errors])
+    // ----- Delete this later ----- //
+
     return (
         <div className="add-modal-container">
             <div className="add-modal-content">
@@ -71,8 +92,9 @@ function AddListingDialog({
                             />
                         )}
                     </div>
+
                 ))}
-                <button onClick={() => handleSave(formData, closeModal)}>Save</button>
+                <button onClick={() => handleSave(formData, closeModal, setErrors)}>Save</button>
                 <button onClick={() => handleCancel(closeModal)}>Cancel</button>
             </div>
         </div>
