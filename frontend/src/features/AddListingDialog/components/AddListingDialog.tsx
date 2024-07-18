@@ -63,37 +63,104 @@ function AddListingDialog({
         medianFamilyIncome: 'Median Family Income'
     }
 
-    // ----- Delete this later ----- //
-    useEffect(() => {
-        console.log(errors);
-    }, [errors])
-    // ----- Delete this later ----- //
-
     return (
         <div className="add-modal-container">
             <div className="add-modal-content">
                 <h2>Add Listing</h2>
-                {Object.keys(formData).map((field) => (
-                    <div key={field}>
-                        <label className="required">{fieldNames[field]}</label>
-                        {field === 'province' ? (
-                            <select name={field} value={formData[field]} onChange={(e) => handleChange(e, formData, setFormData)}>
-                                <option value="">Select Province</option>
-                                {provinces.map(province => (
-                                    <option key={province} value={province}>{province}</option>
-                                ))}
-                            </select>
-                        ) : (
-                            <input
-                                type={field === 'price' || field.includes('number') || field.includes('Population') || field.includes('Latitude') || field.includes('Longitude') || field.includes('Income') ? 'number' : 'text'}
-                                name={field}
-                                value={formData[field]}
-                                onChange={(e) => handleChange(e, formData, setFormData)}
-                            />
-                        )}
-                    </div>
-
-                ))}
+                <div>
+                    <label className="required">City</label>
+                    <input
+                        type="text"
+                        name="city"
+                        value={formData.city}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    />
+                </div>
+                <div>
+                    <label className="required">Price</label>
+                    <input
+                        type="number"
+                        name="price"
+                        value={formData.price}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    />
+                </div>
+                <div>
+                    <label className="required">Address</label>
+                    <input
+                        type="text"
+                        name="address"
+                        value={formData.address}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    />
+                </div>
+                <div>
+                    <label className="required">Number of Beds</label>
+                    <input
+                        type="number"
+                        name="numberBeds"
+                        value={formData.numberBeds}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    />
+                </div>
+                <div>
+                    <label className="required">Number of Baths</label>
+                    <input
+                        type="number"
+                        name="numberBaths"
+                        value={formData.numberBaths}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    />
+                </div>
+                <div>
+                    <label className="required">Province</label>
+                    <select
+                        name="province"
+                        value={formData.province}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    >
+                        <option value="">Select Province</option>
+                        {provinces.map(province => (
+                                <option key={province} value={province}>{province}</option>
+                            ))}
+                    </select>
+                </div>
+                <div>
+                    <label className="required">Population</label>
+                    <input
+                        type="number"
+                        name="population"
+                        value={formData.population}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    />
+                </div>
+                <div>
+                    <label className="required">Latitude</label>
+                    <input
+                        type="number"
+                        name="latitude"
+                        value={formData.latitude}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    />
+                </div>
+                <div>
+                    <label className="required">Longitude</label>
+                    <input
+                        type="number"
+                        name="longitude"
+                        value={formData.longitude}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    />
+                </div>
+                <div>
+                    <label className="required">Median Family Income</label>
+                    <input
+                        type="number"
+                        name="medianFamilyIncome"
+                        value={formData.medianFamilyIncome}
+                        onChange={(e) => handleChange(e, formData, setFormData)}
+                    />
+                </div>
                 <button onClick={() => handleSave(formData, closeModal, setErrors)}>Save</button>
                 <button onClick={() => handleCancel(closeModal)}>Cancel</button>
             </div>
