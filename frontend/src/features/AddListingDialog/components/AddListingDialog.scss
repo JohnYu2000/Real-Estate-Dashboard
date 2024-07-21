@@ -47,6 +47,13 @@
                     flex-grow: 1;
                 }
             }
+
+            .fieldValidationMessage {
+                display: flex;
+                justify-content: right;
+                font-size: 12px;
+                color: red;
+            }
         }
 
         button {

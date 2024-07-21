@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './AddListingDialog.css';
 import { handleCancel } from './../utils/handleCancel.tsx'
 import { handleChange } from './../utils/handleChange.tsx';
@@ -50,19 +50,6 @@ function AddListingDialog({
         medianFamilyIncome: ''
     })
 
-    const fieldNames = {
-        city: 'City',
-        price: 'Price',
-        address: 'Address',
-        numberBeds: 'Number of Beds',
-        numberBaths: 'Number of Baths',
-        province: 'Province',
-        population: 'Population',
-        latitude: 'Latitude',
-        longitude: 'Longitude',
-        medianFamilyIncome: 'Median Family Income'
-    }
-
     return (
         <div className="add-modal-container">
             <div className="add-modal-content">
@@ -77,7 +64,7 @@ function AddListingDialog({
                             onChange={(e) => handleChange(e, formData, setFormData)}
                         />    
                     </div>
-                    
+                    {errors.city && <span className="fieldValidationMessage">{errors.city}</span>}
                 </div>
                 <div>
                     <div className="field-div">
@@ -87,8 +74,9 @@ function AddListingDialog({
                             name="price"
                             value={formData.price}
                             onChange={(e) => handleChange(e, formData, setFormData)}
-                        />    
+                        />
                     </div>
+                    {errors.price && <span className="fieldValidationMessage">{errors.price}</span>}
                 </div>
                 <div>
                     <div className="field-div">
@@ -100,6 +88,7 @@ function AddListingDialog({
                             onChange={(e) => handleChange(e, formData, setFormData)}
                         />    
                     </div>
+                    {errors.address && <span className="fieldValidationMessage">{errors.address}</span>}
                 </div>
                 <div>
                     <div className="field-div">
@@ -111,6 +100,7 @@ function AddListingDialog({
                             onChange={(e) => handleChange(e, formData, setFormData)}
                         />
                     </div>
+                    {errors.numberBeds && <span className="fieldValidationMessage">{errors.numberBeds}</span>}
                 </div>
                 <div>
                     <div className="field-div">
@@ -122,6 +112,7 @@ function AddListingDialog({
                             onChange={(e) => handleChange(e, formData, setFormData)}
                         />    
                     </div>
+                    {errors.numberBaths && <span className="fieldValidationMessage">{errors.numberBaths}</span>}
                 </div>
                 <div>
                     <div className="field-div">
@@ -137,6 +128,7 @@ function AddListingDialog({
                                 ))}
                         </select>    
                     </div>
+                    {errors.province && <span className="fieldValidationMessage">{errors.province}</span>}
                 </div>
                 <div>
                     <div className="field-div">
@@ -148,6 +140,7 @@ function AddListingDialog({
                             onChange={(e) => handleChange(e, formData, setFormData)}
                         />    
                     </div>
+                    {errors.population && <span className="fieldValidationMessage">{errors.population}</span>}
                 </div>
                 <div>
                     <div className="field-div">
@@ -159,6 +152,7 @@ function AddListingDialog({
                             onChange={(e) => handleChange(e, formData, setFormData)}
                         />    
                     </div>
+                    {errors.latitude && <span className="fieldValidationMessage">{errors.latitude}</span>}
                 </div>
                 <div>
                     <div className="field-div">
@@ -170,6 +164,7 @@ function AddListingDialog({
                             onChange={(e) => handleChange(e, formData, setFormData)}
                         />    
                     </div>
+                    {errors.longitude && <span className="fieldValidationMessage">{errors.longitude}</span>}
                 </div>
                 <div>
                     <div className="field-div">
@@ -181,6 +176,7 @@ function AddListingDialog({
                             onChange={(e) => handleChange(e, formData, setFormData)}
                         />    
                     </div>
+                    {errors.medianFamilyIncome && <span className="fieldValidationMessage">{errors.medianFamilyIncome}</span>}
                 </div>
                 <button onClick={() => handleSave(formData, closeModal, setErrors)}>Save</button>
                 <button onClick={() => handleCancel(closeModal)}>Cancel</button>

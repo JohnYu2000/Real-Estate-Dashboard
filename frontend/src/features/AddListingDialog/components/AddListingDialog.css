@@ -43,6 +43,12 @@
 .add-modal-container .add-modal-content div .field-div input, .add-modal-container .add-modal-content div .field-div select {
   flex-grow: 1;
 }
+.add-modal-container .add-modal-content div .fieldValidationMessage {
+  display: flex;
+  justify-content: right;
+  font-size: 12px;
+  color: red;
+}
 .add-modal-container .add-modal-content button {
   margin-top: 10px;
 }
