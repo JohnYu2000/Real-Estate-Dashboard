@@ -164,6 +164,20 @@ namespace DatabaseNamespace.Controllers {
             return NoContent();
         }
 
+        [Authorize]
+        [HttpDelete("listing")]
+        public async Task<IActionResult> DeleteListing([FromQuery] int id) {
+            var listing = await _context.Listings.FindAsync(id);
+            if (listing == null) {
+                return NotFound();
+            }
+
+            _context.Listings.Remove(listing);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         private bool ListingExists(int id) {
             return _context.Listings.Any(e => e.Id == id);
         }
