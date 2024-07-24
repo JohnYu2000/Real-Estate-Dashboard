@@ -15,6 +15,7 @@ import { AddListingDialog } from '../../AddListingDialog/index.js';
 import { EditListingDialog } from '../../EditListingDialog/index.js';
 import handleDecrement from './../utils/handleDecrement.tsx';
 import handleIncrement from './../utils/handleIncrement.tsx';
+import handleDelete from './../utils/handleDelete.tsx';
 
 interface TableHeaderProps {
     page: number;
@@ -103,6 +104,7 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                         'color': 'white',
                         'alignSelf': 'flex-end'
                     }}
+                    onClick={() => handleDelete(selectedRow)}
                 />
             </div>
             <dialog ref={columnModalRef} className="column-selector-modal">
