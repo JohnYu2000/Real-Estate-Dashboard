@@ -37,7 +37,7 @@ interface FetchListingsParams {
     pageSize?: number;
 }
 
-const useListings = (queryParams: FetchListingsParams) => {
+const useListings = (queryParams: FetchListingsParams, fetchTrigger: boolean) => {
     const [listings, setListings] = useState<Listing[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -64,7 +64,7 @@ const useListings = (queryParams: FetchListingsParams) => {
         };
 
         fetchListings();
-    }, [queryParams]);
+    }, [queryParams, fetchTrigger]);
 
     return { listings, loading, error };
 };

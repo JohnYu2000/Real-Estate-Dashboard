@@ -25,9 +25,10 @@ interface TableHeaderProps {
     filters: any;
     setFilters: (filters: any) => void;
     selectedRow: any;
+    triggerFetch: () => void;
 }
 
-function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filters, setFilters, selectedRow }: TableHeaderProps) {
+function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filters, setFilters, selectedRow, triggerFetch }: TableHeaderProps) {
     const columnModalRef = useRef<HTMLDialogElement>(null);
     const filterModalRef = useRef<HTMLDialogElement>(null);
     const addModalRef = useRef<HTMLDialogElement>(null);
@@ -104,7 +105,7 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                         'color': 'white',
                         'alignSelf': 'flex-end'
                     }}
-                    onClick={() => handleDelete(selectedRow)}
+                    onClick={() => handleDelete(selectedRow, triggerFetch)}
                 />
             </div>
             <dialog ref={columnModalRef} className="column-selector-modal">
