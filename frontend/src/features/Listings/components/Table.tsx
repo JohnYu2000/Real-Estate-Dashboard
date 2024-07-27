@@ -21,6 +21,7 @@ function Table() {
     ]);
     const [filters, setFilters] = useState({});
     const [selectedRow, setSelectedRow] = useState(null);
+    const [fetchTrigger, setFetchTrigger] = useState(false);
 
     return (
         <div className="contain-table">
@@ -32,6 +33,7 @@ function Table() {
                 filters={filters}
                 setFilters={setFilters}
                 selectedRow={selectedRow}
+                triggerFetch={() => setFetchTrigger(prev => !prev)}
             />
             <TableContent
                 page={page}
@@ -39,6 +41,7 @@ function Table() {
                 filters={filters}
                 selectedRow={selectedRow}
                 setSelectedRow={setSelectedRow}
+                fetchTrigger={fetchTrigger}
             />
         </div>
     )

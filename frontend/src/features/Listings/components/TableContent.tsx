@@ -9,12 +9,13 @@ interface TableContentProps {
     filters: any;
     selectedRow: any;
     setSelectedRow: (row: any) => void;
+    fetchTrigger: boolean;
 }
 
-function TableContent({ page, selectedColumns, filters, selectedRow, setSelectedRow }: TableContentProps) {
+function TableContent({ page, selectedColumns, filters, selectedRow, setSelectedRow, fetchTrigger }: TableContentProps) {
     const queryParams = useMemo(() => ({ page, ...filters }), [page, filters]);
 
-    const { listings, loading, error } = useListings(queryParams);
+    const { listings, loading, error } = useListings(queryParams, fetchTrigger);
 
     if (loading) {
         return <div>Loading...</div>
