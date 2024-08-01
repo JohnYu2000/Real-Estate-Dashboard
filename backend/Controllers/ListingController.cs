@@ -17,6 +17,17 @@ namespace DatabaseNamespace.Controllers {
         }
 
         [Authorize]
+        [HttpGet("listing")]
+        public async Task<ActionResult<Listing>> GetListingById([FromQuery] int id) {
+            var listing = await _context.Listings.FindAsync(id);
+            if (listing == null) {
+                return NotFound();
+            }
+
+            return listing;
+        }
+
+        [Authorize]
         [HttpGet("listings")]
         public async Task<ActionResult<IEnumerable<Listing>>> GetListings(
             [FromQuery] string? city = null,
