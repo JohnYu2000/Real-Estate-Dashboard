@@ -8,11 +8,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import { ColumnSelectorDialog }  from '../../ColumnSelectorDialog/index.js';
 import { FilterListingsDialog } from '../../FilterListingsDialog/index.js';
 import { AddListingDialog } from '../../AddListingDialog/index.js';
 import { EditListingDialog } from '../../EditListingDialog/index.js';
+import { ViewListingDialog } from '../../ViewListingDialog/index.js';
 import handleDecrement from './../utils/handleDecrement.tsx';
 import handleIncrement from './../utils/handleIncrement.tsx';
 import handleDelete from './../utils/handleDelete.tsx';
@@ -31,6 +33,7 @@ interface TableHeaderProps {
 function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filters, setFilters, selectedRow, triggerFetch }: TableHeaderProps) {
     const columnModalRef = useRef<HTMLDialogElement>(null);
     const filterModalRef = useRef<HTMLDialogElement>(null);
+    const viewModalRef = useRef<HTMLDialogElement>(null);
     const addModalRef = useRef<HTMLDialogElement>(null);
     const editModalRef = useRef<HTMLDialogElement>(null);
 
@@ -39,6 +42,9 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
 
     const openFilterModal = () => filterModalRef.current?.showModal();
     const closeFilterModal = () => filterModalRef.current?.close();
+
+    const openViewModal = () => viewModalRef.current?.showModal();
+    const closeViewModal = () => viewModalRef.current?.close();
 
     const openAddModal = () => addModalRef.current?.showModal();
     const closeAddModal = () => addModalRef.current?.close();
@@ -76,6 +82,16 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                         'alignSelf': 'flex-end'
                     }}
                     onClick={openFilterModal}
+                />
+            </div>
+            <div className="icon-selector">
+                <VisibilityIcon
+                    style={{
+                        'fontSize': '36px',
+                        'color': 'white',
+                        'alignSelf': 'flex-end'
+                    }}
+                    onClick={openViewModal}
                 />
             </div>
             <div className="icon-selector">
@@ -121,6 +137,9 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                     setFilters={setFilters}
                     closeModal={closeFilterModal}
                 />
+            </dialog>
+            <dialog>
+                <ViewListingDialog closeModal={closeViewModal} />
             </dialog>
             <dialog ref={addModalRef} className="add-selector-modal">
                 <AddListingDialog
