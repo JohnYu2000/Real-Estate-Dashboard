@@ -43,13 +43,21 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
     const openFilterModal = () => filterModalRef.current?.showModal();
     const closeFilterModal = () => filterModalRef.current?.close();
 
-    const openViewModal = () => viewModalRef.current?.showModal();
+    const openViewModal = () => {
+        if (selectedRow) {
+            viewModalRef.current?.showModal();
+        }
+    }
     const closeViewModal = () => viewModalRef.current?.close();
 
     const openAddModal = () => addModalRef.current?.showModal();
     const closeAddModal = () => addModalRef.current?.close();
 
-    const openEditModal = () => editModalRef.current?.showModal();
+    const openEditModal = () => {
+        if (selectedRow) {
+            editModalRef.current?.showModal();    
+        }
+    }
     const closeEditModal = () => editModalRef.current?.close();
 
     return (
@@ -138,8 +146,13 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                     closeModal={closeFilterModal}
                 />
             </dialog>
-            <dialog>
-                <ViewListingDialog closeModal={closeViewModal} />
+            <dialog ref={viewModalRef} className="view-selector-modal">
+                {selectedRow && (
+                    <ViewListingDialog
+                        selectedRow={selectedRow}
+                        closeModal={closeViewModal}
+                    />    
+                )}
             </dialog>
             <dialog ref={addModalRef} className="add-selector-modal">
                 <AddListingDialog
