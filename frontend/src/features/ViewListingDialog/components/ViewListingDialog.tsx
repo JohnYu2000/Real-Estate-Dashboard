@@ -1,4 +1,5 @@
 import React from 'react';
+import './ViewListingDialog.css';
 
 interface ViewListingDialogProps {
     selectedRow: {
