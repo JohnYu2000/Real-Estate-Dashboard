@@ -33,6 +33,7 @@ function Table() {
                 filters={filters}
                 setFilters={setFilters}
                 selectedRow={selectedRow}
+                setSelectedRow={setSelectedRow}
                 triggerFetch={() => setFetchTrigger(prev => !prev)}
             />
             <TableContent

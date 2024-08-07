@@ -157,6 +157,11 @@
   justify-content: center;
   cursor: pointer;
 }
+.contain-listings .contain-body .contain-content .contain-table .contain-tableheader .icon-selector.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
 .contain-listings .contain-body .contain-content .contain-table .contain-tablecontent {
   display: flex;
   flex-direction: column;
