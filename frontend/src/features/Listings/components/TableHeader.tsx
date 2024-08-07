@@ -27,10 +27,20 @@ interface TableHeaderProps {
     filters: any;
     setFilters: (filters: any) => void;
     selectedRow: any;
+    setSelectedRow: (row: any) => void;
     triggerFetch: () => void;
 }
 
-function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filters, setFilters, selectedRow, triggerFetch }: TableHeaderProps) {
+function TableHeader({
+    page, setPage,
+    selectedColumns,
+    setSelectedColumns,
+    filters,
+    setFilters,
+    selectedRow,
+    setSelectedRow,
+    triggerFetch }: TableHeaderProps) 
+{
     const columnModalRef = useRef<HTMLDialogElement>(null);
     const filterModalRef = useRef<HTMLDialogElement>(null);
     const viewModalRef = useRef<HTMLDialogElement>(null);
@@ -92,7 +102,7 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                     onClick={openFilterModal}
                 />
             </div>
-            <div className="icon-selector">
+            <div className={`icon-selector ${!selectedRow ? 'disabled' : ''}`}>
                 <VisibilityIcon
                     style={{
                         'fontSize': '36px',
@@ -112,7 +122,7 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                     onClick={openAddModal}
                 />
             </div>
-            <div className="icon-selector">
+            <div className={`icon-selector ${!selectedRow ? 'disabled' : ''}`}>
                 <EditIcon
                     style={{
                         'fontSize': '36px',
@@ -122,14 +132,14 @@ function TableHeader({ page, setPage, selectedColumns, setSelectedColumns, filte
                     onClick={openEditModal}
                 />
             </div>
-            <div className="icon-selector">
+            <div className={`icon-selector ${!selectedRow ? 'disabled' : ''}`}>
                 <DeleteIcon
                     style={{
                         'fontSize': '36px',
                         'color': 'white',
                         'alignSelf': 'flex-end'
                     }}
-                    onClick={() => handleDelete(selectedRow, triggerFetch)}
+                    onClick={() => handleDelete(selectedRow, setSelectedRow, triggerFetch)}
                 />
             </div>
             <dialog ref={columnModalRef} className="column-selector-modal">

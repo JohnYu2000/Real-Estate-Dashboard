@@ -181,6 +181,12 @@ $light-border-color: #e3e3e3;
                         justify-content: center;
                         cursor: pointer;
                     }
+
+                    .icon-selector.disabled {
+                        opacity: 0.5;
+                        pointer-events: none;
+                        cursor: not-allowed;
+                    }
                 }
 
                 .contain-tablecontent {
