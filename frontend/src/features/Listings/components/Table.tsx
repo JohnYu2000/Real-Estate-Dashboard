@@ -22,6 +22,7 @@ function Table() {
     const [filters, setFilters] = useState({});
     const [selectedRow, setSelectedRow] = useState(null);
     const [fetchTrigger, setFetchTrigger] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     return (
         <div className="contain-table">
